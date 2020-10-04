@@ -28,3 +28,10 @@ jobs:
         with:
           root_file: cv.tex
           latexmk_use_lualatex: true
+
+      # Upload pdf 
+      - name: Upload pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: Resume - Max Powis
+          path: cv.pdf
