@@ -1,6 +1,6 @@
 % !TEX TS-program = lualatex
 
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,10pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -29,7 +29,21 @@
 \newcommand{\sotag}[1]{\tikz[baseline]{\node[anchor=base, rounded corners=0.5ex, text height=1.5ex, text depth=.25ex, fill=tagbg, draw=tagbg, text=tagtxt] {#1};}}
 
 % Helpers for adding job entries
+\usepackage[english]{babel}
+\usepackage[en-GB,calc]{datetime2}
+\DTMnewdatestyle{shortmonth}{%
+ \renewcommand{\DTMdisplaydate}[4]{%
+  \DTMshortmonthname{##2} \number##1 }%
+ \renewcommand{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+\newcommand{\displayshortmonth}[1]{%
+{% group here!
+  \DTMsetdatestyle{shortmonth}%
+  \DTMUsedate{#1}%
+}%
+}
 \newcommand{\job}[2]{\large\sffamily \textbf{#1} at \textbf{#2}}
+\newcommand{\joblog}[5]{\DTMsavedate{startdate}{#4}\DTMsavedate{enddate}{#5}\displayshortmonth{startdate}--\displayshortmonth{enddate} & \large\sffamily \textbf{#1} at \textbf{#2}, {#3} \\(x years, x months)}
 \newcommand{\sep}{\multicolumn{2}{c}{}\\}
 
 % tweak the url colors
@@ -69,7 +83,11 @@
 
 \section{Work Experience}
 \begin{longtable}{r|p{0.72\textwidth}}
-  \textsc{Oct 2012--Jan 2019} & \job{Senior Data Engineer}{dFakto}, Brussels \\(6 years, 2 months)
+  \joblog{Freelance Data Expert}{maxPowX}{Brussels}{2019-01-07}{2020-10-10}
+    &Having deep interest in data modeling and data management, I have been devoted to smoothening business processes and providing governance bodies with reliable information through advanced data integration techniques.\\&\\
+    &Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.\\\sep
+
+  \joblog{Senior Data Engineer}{dFakto}{Brussels}{2012-10-01}{2019-01-04}
     &Having deep interest in data modeling and data management, I have been devoted to smoothening business processes and providing governance bodies with reliable information through advanced data integration techniques.\\&\\
     &Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.\\\sep
   
