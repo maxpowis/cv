@@ -2,7 +2,6 @@
 
 \documentclass[a4paper,10pt]{article}
 
-\usepackage[utf8]{inputenc}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{libertine}
 \usepackage{fontawesome}
@@ -30,20 +29,27 @@
 
 % Helpers for adding job entries
 \usepackage[english]{babel}
-\usepackage[en-GB,calc]{datetime2}
+\usepackage[en-GB,calc,useregional,useregional=numeric,datesep=/]{datetime2}
 \DTMnewdatestyle{shortmonth}{%
  \renewcommand{\DTMdisplaydate}[4]{%
   \DTMshortmonthname{##2} \number##1 }%
  \renewcommand{\DTMDisplaydate}{\DTMdisplaydate}%
 }
 \newcommand{\displayshortmonth}[1]{%
-{% group here!
+{% group actions
   \DTMsetdatestyle{shortmonth}%
-  \DTMUsedate{#1}%
+  \DTMsavedate{mydate}{#1}\DTMUsedate{mydate}%
 }%
-}
+}%
+\newcount\myct
+\newcommand{\displaymonthsdiff}[2]{%
+  \DTMsavedate{startdate}{#1}%
+  \DTMsavedate{enddate}{#2}%
+  \DTMsaveddatediff{enddate}{startdate}{\myct}%
+  \number\myct\space day\ifnum\myct>1s%
+} 
 \newcommand{\job}[2]{\large\sffamily \textbf{#1} at \textbf{#2}}
-\newcommand{\joblog}[5]{\DTMsavedate{startdate}{#4}\DTMsavedate{enddate}{#5}\displayshortmonth{startdate}--\displayshortmonth{enddate} & \large\sffamily \textbf{#1} at \textbf{#2}, {#3} \\(x years, x months)}
+\newcommand{\joblog}[5]{\displayshortmonth{#4}--\displayshortmonth{#5} & \large\sffamily \textbf{#1} at \textbf{#2}, {#3} \\ \displaymonthsdiff{#4}{#5}}
 \newcommand{\sep}{\multicolumn{2}{c}{}\\}
 
 % tweak the url colors
@@ -68,7 +74,7 @@
 \begin{tabular}{rl}
   \textsc{Phone:}     & +32 499 673767\\
   \textsc{Email:}     & \href{mailto:max@pow.is}{max@pow.is}\\
-  \textsc{Socials:}   & \faFirefox{} \href{https://max.powis.is}{https://max.pow.is} 
+  \textsc{Socials:}   & \faFirefox{} \href{https://max.pow.is}{https://max.pow.is} 
                       | \faTwitter{} \href{https://twitter.com/maxpowis}{twitter} 
                       | \faLinkedin{} \href{https://www.linkedin.com/in/maxpowis/}{linkedin}
 %                      | \faGithub{} \href{https://github.com/maxpowis}{github}
@@ -94,12 +100,12 @@
   \hline
   \multicolumn{2}{r}{\footnotesize\itshape (abbreviated work history below, see LinkedIn profile for full details)}\\\sep
   
-  \textsc{Nov 2006--Sep 2012} & \job{Analyst Programmer}{Accenture Technology Solutions}, Brussels \\(5 years, 10 months)
+  \joblog{Analyst Programmer}{Accenture Technology Solutions}{Brussels}{2006-11-01}{2012-09-30}
     &Integrated enterprise applications (EAI) for major companies active in the telecommunication and banking industries.\\&\\
     &Extensive experience with offshore application delivery centers in Bratislava and Bangalore.\\&\\
     &Took part in the application design, implementation, test and delivery management of the Java technology based products.\\\sep
   
-  \textsc{Feb 2005--May 2005} & \job{Intern, Developer}{Edesign}, Ophain \\(2 years, 7 months)
+  \joblog{Intern, Developer}{Edesign}{Ophain}{2005-02-01}{2005-05-01}
     &\sotag{java} \sotag{PHP} \sotag{SOA}\\&\\
     &Study, design and implementation of a "PermissionService" in the core company's product.\\\sep
   
@@ -126,7 +132,7 @@
   \textsc{Programming}:&C\# | Java | Python\\
 \end{tabular}
 
-\section{Skills and Accomplishments}
+\section{Skills and Acomplishments}
 \begin{tabular}{rl}
   \textsc{Languages:}& French, English, Dutch\\
 \end{tabular}
