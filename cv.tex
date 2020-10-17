@@ -41,13 +41,40 @@
   \DTMsavedate{mydate}{#1}\DTMUsedate{mydate}%
 }%
 }%
-\newcount\myct
-\newcommand{\displaymonthsdiff}[2]{%
+\newcount\datediffdays
+\newcounter{diffdays}
+\newcommand{\setdatediffdays}[2]{%
   \DTMsavedate{startdate}{#1}%
   \DTMsavedate{enddate}{#2}%
-  \DTMsaveddatediff{enddate}{startdate}{\myct}%
-  \number\myct\space day\ifnum\myct>1s%
-} 
+  \DTMsaveddatediff{enddate}{startdate}{\datediffdays}%
+  \setcounter{diffdays}{\number\datediffdays}%
+  \ifnum\value{diffdays}<0
+    \setcounter{diffdays}{-\value{diffdays}}%
+  \fi
+}
+\newcommand{\displaydaysdiff}[2]{%
+  \setdatediffdays{#1}{#2}%
+  \thediffdays\space day\ifnum\value{diffdays}>1s
+}
+\usepackage{calc}
+\newcounter{diffyears}
+\newcounter{diffmonths}
+\newcommand{\displaymonthsdiff}[2]{%
+  \setdatediffdays{#1}{#2}%
+  \setcounter{diffyears}{\value{diffdays}/365}%
+  \setcounter{diffdays}{\value{diffdays}-365*\value{diffyears}}%
+  \setcounter{diffmonths}{\value{diffdays}/30}%
+  \setcounter{diffdays}{\value{diffdays}-30*\value{diffmonths}}%
+  %
+  \ifnum\value{diffyears}=0
+  \else
+    \thediffyears\space year\ifnum\value{diffyears}>1s\fi,
+  \fi
+  \ifnum\value{diffmonths}=0
+  \else
+    \thediffmonths\space month\ifnum\value{diffmonths}>1s\fi
+  \fi
+}
 \newcommand{\job}[2]{\large\sffamily \textbf{#1} at \textbf{#2}}
 \newcommand{\joblog}[5]{\displayshortmonth{#4}--\displayshortmonth{#5} & \large\sffamily \textbf{#1} at \textbf{#2}, {#3} \\ \displaymonthsdiff{#4}{#5}}
 \newcommand{\sep}{\multicolumn{2}{c}{}\\}
@@ -100,7 +127,7 @@
   \hline
   \multicolumn{2}{r}{\footnotesize\itshape (abbreviated work history below, see LinkedIn profile for full details)}\\\sep
   
-  \joblog{Analyst Programmer}{Accenture Technology Solutions}{Brussels}{2006-11-01}{2012-09-30}
+  \joblog{Analyst Programmer}{Accenture Technology Solutions}{Brussels}{2006-11-27}{2012-09-30}
     &Integrated enterprise applications (EAI) for major companies active in the telecommunication and banking industries.\\&\\
     &Extensive experience with offshore application delivery centers in Bratislava and Bangalore.\\&\\
     &Took part in the application design, implementation, test and delivery management of the Java technology based products.\\\sep
