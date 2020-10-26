@@ -68,7 +68,8 @@
   %
   \ifnum\value{diffyears}=0
   \else
-    \thediffyears\space year\ifnum\value{diffyears}>1s\fi,
+    \thediffyears\space year\ifnum\value{diffyears}>1s\fi
+    \ifnum\value{diffmonths}>0, \fi
   \fi
   \ifnum\value{diffmonths}=0
   \else
@@ -76,7 +77,9 @@
   \fi
 }
 \newcommand{\job}[2]{\large\sffamily \textbf{#1} at \textbf{#2}}
-\newcommand{\joblog}[5]{\displayshortmonth{#4}--\displayshortmonth{#5} & \large\sffamily \textbf{#1} at \textbf{#2}, {#3} \\ \displaymonthsdiff{#4}{#5}}
+\newcommand{\joblog}[5]{\textsc{\displayshortmonth{#4} -- \displayshortmonth{#5}} & \large\sffamily \textbf{#1} at \textbf{#2}, {#3}\\\textit{(\displaymonthsdiff{#4}{#5} )}}
+%\newcommand{\joblogcurrent}[4]{\DTMsavenow{now}\joblog{#1}{#2}{#3}{#4}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}}
+\newcommand{\joblogcurrent}[4]{\joblog{#1}{#2}{#3}{#4}{2020-10-26}}
 \newcommand{\sep}{\multicolumn{2}{c}{}\\}
 
 % tweak the url colors
@@ -116,7 +119,7 @@
 
 \section{Work Experience}
 \begin{longtable}{r|p{0.72\textwidth}}
-  \joblog{Freelance Data Expert}{maxPowX}{Brussels}{2019-01-07}{2020-10-10}
+  \joblogcurrent{Freelance Data Expert}{maxPowX}{Brussels}{2019-01-07}
     &Having deep interest in data modeling and data management, I have been devoted to smoothening business processes and providing governance bodies with reliable information through advanced data integration techniques.\\&\\
     &Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.\\\sep
 
