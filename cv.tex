@@ -76,10 +76,9 @@
     \thediffmonths\space month\ifnum\value{diffmonths}>1s\fi
   \fi
 }
-\newcommand{\job}[2]{\large\sffamily \textbf{#1} at \textbf{#2}}
 \newcommand{\joblog}[5]{\textsc{\displayshortmonth{#4} -- \displayshortmonth{#5}} & \large\sffamily \textbf{#1} at \textbf{#2}, {#3}\\\textit{(\displaymonthsdiff{#4}{#5} )}}
-%\newcommand{\joblogcurrent}[4]{\DTMsavenow{now}\joblog{#1}{#2}{#3}{#4}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}}
-\newcommand{\joblogcurrent}[4]{\joblog{#1}{#2}{#3}{#4}{2020-10-26}}
+\DTMsavenow{now}
+\newcommand{\joblogcurrent}[4]{\joblog{#1}{#2}{#3}{#4}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}}
 \newcommand{\sep}{\multicolumn{2}{c}{}\\}
 
 % tweak the url colors
