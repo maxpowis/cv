@@ -1,6 +1,6 @@
 % !TEX TS-program = lualatex
 
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,9pt]{article}
 
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{libertine}
@@ -26,6 +26,7 @@
 \definecolor{tagbg}{RGB}{225,236,244}
 \definecolor{tagtxt}{RGB}{88,115,159}
 \newcommand{\sotag}[1]{\tikz[baseline]{\node[anchor=base, rounded corners=0.5ex, text height=1.5ex, text depth=.25ex, fill=tagbg, draw=tagbg, text=tagtxt] {#1};}}
+\newcommand{\sotagtech}[1]{\tikz[baseline]{\footnotesize\node[anchor=base, rounded corners=0.5ex, text height=1.5ex, text depth=.25ex, fill=tagbg, draw=tagbg, text=tagtxt] {#1};}}
 
 % Helpers for adding job entries
 \usepackage[english]{babel}
@@ -116,30 +117,56 @@
 
   Interests: \sotag{data-modeling} \sotag{data-architecture} \sotag{data-integration} \sotag{data-warehouse-automation} \end{tabular}
 
-\section{Work Experience}
+\section{Companies I have worked for}
 \begin{longtable}{r|p{0.72\textwidth}}
   \joblogcurrent{Freelance Data Expert}{maxPowX}{Brussels}{2019-01-07}
-    &Having deep interest in data modeling and data management, I have been devoted to smoothening business processes and providing governance bodies with reliable information through advanced data integration techniques.\\&\\
-    &Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.\\\sep
+    &Consultant in data architecture, data modeling, data governance, data integration, system integration, reference data, master data management and business analytics.\\\sep
+  
+  %\hline
+  %\multicolumn{2}{r}{\footnotesize\itshape (abbreviated work history below, see LinkedIn profile for full details)}\\\sep
 
   \joblog{Senior Data Engineer}{dFakto}{Brussels}{2012-10-01}{2019-01-04}
     &Having deep interest in data modeling and data management, I have been devoted to smoothening business processes and providing governance bodies with reliable information through advanced data integration techniques.\\&\\
     &Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.\\\sep
-  
-  \hline
-  \multicolumn{2}{r}{\footnotesize\itshape (abbreviated work history below, see LinkedIn profile for full details)}\\\sep
   
   \joblog{Analyst Programmer}{Accenture Technology Solutions}{Brussels}{2006-11-27}{2012-09-30}
     &Integrated enterprise applications (EAI) for major companies active in the telecommunication and banking industries.\\&\\
     &Extensive experience with offshore application delivery centers in Bratislava and Bangalore.\\&\\
     &Took part in the application design, implementation, test and delivery management of the Java technology based products.\\\sep
   
+\end{longtable}
+
+\section{Missions I have carried out}
+\begin{longtable}{r|p{0.72\textwidth}}
+  \joblogcurrent{Data Governance Manager}{Belgian Telco}{Brussels}{2019-01-11}
+    &\sotagtech{Collibra} \sotagtech{REST API} \sotagtech{Swagger} \sotagtech{SOAP UI}\\&\\
+    &As a Data Model governenca capablity owner, I was responsible to define the capability functions and implementations guidelines towards a new way of working.\\&\\
+    &I was also responsible for the implementation of the glossary capability for the BI Community from design to delivery, including awareness and training session for 130+ people.\\&\\
+    &Strong from past experience in EAI, I also deisgned and delivered a fully working Business Capability Service integration of the glossary wihtin a BI DataSet Development Framework to support Term-driven documentation at design time.\\\sep
+
+  \multicolumn{2}{r}{\footnotesize\itshape (cont. on the next page)}\\\sep
+  \newpage
+
+  \joblog{Data Vault Architect}{Aerospace Manufacturing Company}{Brussels}{2018-03-01}{2019-01-31}
+    &\sotagtech{Data Vault} \sotagtech{Star Schema} \sotagtech{SQL Server} \sotagtech{Docker} \sotagtech{Datavault Builder} \sotagtech{QlikSense} \sotagtech{PowerShell}\\&\\
+    &Designed, engineered and delivered a full working agile data management platform in 4 months.\\&\\
+    &The Solution server 3 use cases such as on-time delivery, supply chain issue tracking and task pointing performance.\\\sep
+  
+  \joblog{Data Vault Architect}{Insurance Company}{Brussels}{2014-11-01}{2018-03-31}
+    &\sotagtech{Data Vault} \sotagtech{Star Schema} \sotagtech{SQL Server} \sotagtech{Qlik View} \sotagtech{SSIS} \sotagtech{C\# .NET} \sotagtech{SQL Agent}\\&\\
+    &...\\\sep
+
+  \joblog{Solution Architect \& Engineer}{Non-profit organisation}{Brussels}{2013-07-01}{2013-08-01}
+    &\sotagtech{MS Access} \sotagtech{Qlik View} \sotagtech{Business Objects} \sotagtech{VBScript}\\&\\
+    &...\\\sep
+
+  \joblog{Data Vault Architect}{International Bank}{Brussels}{2012-10-01}{2013-07-01}
+    &\sotagtech{SQL Server} \sotagtech{SSIS} \sotagtech{Business Objects} \sotagtech{VBA} \sotagtech{C\#} \sotagtech{VBScript} \sotagtech{Control-M}\\&\\
+    &...\\\sep
+  
   \joblog{Intern, Developer}{Edesign}{Ophain}{2005-02-01}{2005-05-01}
     &\sotag{java} \sotag{PHP} \sotag{SOA}\\&\\
     &Study, design and implementation of a "PermissionService" in the core company's product.\\\sep
-  
-%  \multicolumn{2}{r}{\footnotesize\itshape (cont. on the next page)}\\\sep
-%  \newpage
   
 \end{longtable}
 
