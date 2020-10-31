@@ -6,6 +6,7 @@
 \usepackage{libertine}
 \usepackage{fontawesome}
 \usepackage{longtable}
+\usepackage{parskip}
 \usepackage[cm]{fullpage}
 
 % headers and footers
@@ -90,14 +91,20 @@
 % nicer-looking section titles
 \usepackage{titlesec}
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{1em}{3pt}
-
+\titlespacing{\section}{%
+  0pt}{%left margin
+  1em}{%space before (vertical)
+  3pt}%space after (horizontal)
+  
 \begin{document}
 
 % --------------------TITLE-------------
-\par{\centering
-		{\Huge \textsc{Max Powis}
-	}\bigskip\par}
+\par{
+  \centering{
+    \Huge \textsc{Max Powis}
+  }
+  \bigskip\par
+}
 
 \hrule
 \vspace{0.5em}
@@ -129,15 +136,29 @@
 
   \joblog{Senior Data Engineer}{dFakto}{Brussels}{2012-10-01}{2019-01-04}
     &Having deep interest in data modeling and data management, I have been devoted to smoothening business processes 
-     and providing governance bodies with reliable information through advanced data integration techniques.\\&\\
+     and providing governance bodies with reliable information through advanced data integration techniques.\\\\
     &Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.\\\sep
   
   \joblog{Analyst Programmer}{Accenture Technology Solutions}{Brussels}{2006-11-27}{2012-09-30}
-    &Integrated enterprise applications (EAI) for major companies active in the telecommunication and banking industries.\\&\\
-    &Extensive experience with offshore application delivery centers in Bratislava and Bangalore.\\&\\
+    &Integrated enterprise applications (EAI) for major companies active in the telecommunication and banking industries.\\[4pt]
+    &Extensive experience with offshore application delivery centers in Bratislava and Bangalore.\\[4pt]
     &Took part in the application design, implementation, test and delivery management of the Java technology based products.\\\sep
   
 \end{longtable}
+
+\section{Benches I have scratched}
+\begin{longtable}{r|p{0.72\textwidth}}
+  \joblog{Post-bachelor E-Design}{HoGent\footnote{Hogeschool Gent department Bedrijfskunde}}{Aalst, BE}{2005-09-01}{2006-06-30}
+    &Coursework included Multimedia Authoring, e-Business, Web design \& development, CMS and more.\\\par
+    &Also a great opportunity to get comfortable at speaking Dutch.\\\sep
+
+  \joblog{Bachelor of Computer Science option Management}{IESN\footnote{Haute école d’Enseignement Supérieur de Namur}}{Namur, BE}{2002-09-01}{2005-06-30}
+    &Coursework included UML, Java, C, C++, C\#, Cobol, Assembler, data modeling, project management and much
+    more.\\\sep
+
+\end{longtable}
+
+\newpage
 
 \section{Missions I have carried out}
 \begin{longtable}{r|p{0.72\textwidth}}
@@ -150,8 +171,8 @@
     &SDelivered a real-time Business Capability Service integration of the glossary wihtin a BI DataSet Development 
      Framework to support business term-driven documentation of data assets at design time.\\\sep
 
-  \multicolumn{2}{r}{\footnotesize\itshape (cont. on the next page)}\\\sep
-  \newpage
+  %\multicolumn{2}{r}{\footnotesize\itshape (cont. on the next page)}\\\sep
+  %\newpage
 
   \joblog{Data Vault Architect}{Aerospace Manufacturing C°}{Brussels, BE}{2018-03-01}{2019-01-31}
     &\sotagtech{Data Vault} \sotagtech{Star Schema} \sotagtech{SQL Server} \sotagtech{(SQL Server) Master Data Services} 
@@ -204,20 +225,6 @@
     &\sotag{java} \sotag{PHP} \sotag{SOA}\\&\\
     &Study, design and implementation of a "PermissionService" in the core company's product.\\\sep
   
-\end{longtable}
-
-
-\section{Education}
-\begin{longtable}{r|p{0.72\textwidth}}
-  \joblog{Post-bachelor}{Hogeschool Gent Departement Bedrijfskunde Aalst}{Aalst, BE}{2005-09-01}{2006-06-30}
-    &Post-bachelor E-design. Mainly a great opportunity to get comfortable at speaking Dutch.\\&\\
-    &Coursework included Multimedia Authoring, e-Business, Web design \& development, CMS and more.\\\sep
-
-  \joblog{Bachelor}{Haute école d’Enseignement Supérieur de Namur (IESN)}{Namur, BE}{2002-09-01}{2005-06-30}
-    &Bachelor of Computer Science option Management.\\&\\
-    &Coursework included UML, Java, C, C++, C\#, Cobol, Assembler, data modeling, project management and much
-    more.\\\sep
-
 \end{longtable}
 
 \section{Data Proficiency}
