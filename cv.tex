@@ -1,6 +1,6 @@
 % !TEX TS-program = lualatex
 
-\documentclass[a4paper,9pt]{article}
+\documentclass[a4paper,10pt]{article}
 
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{libertine}
@@ -87,7 +87,17 @@
     \ifnum\value{diffmonths}>0, \fi
   \fi
 }
-\newcommand{\joblog}[5]{\textsc{\displayshortmonth{#4} -- \displayshortmonth{#5}} & \large\sffamily \textbf{#1} at \textbf{#2}, \small{#3}\\\textit{(\displaymonthsdiff{#4}{#5} )}}
+\newcommand{\joblog}[5]{
+  \textsc{\displayshortmonth{#4}}%
+  \setdatediffdays{#5}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}%
+  \ifnum\value{diffdays}=0
+    >> Present
+  \else
+    -- 
+    \textsc{\displayshortmonth{#5}}
+  \fi
+  & \large\sffamily \textbf{#1} at \textbf{#2}, \small{#3}\\\textit{(\displaymonthsdiff{#4}{#5} )}
+}
 \DTMsavenow{now}
 \newcommand{\joblogcurrent}[4]{\joblog{#1}{#2}{#3}{#4}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}}
 \newcommand{\displayage}[1]{\displayyearsdiff{#1}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}} old}
