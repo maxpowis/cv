@@ -63,10 +63,10 @@
 \newcounter{diffmonths}
 \newcommand{\displaymonthsdiff}[2]{%
   \setdatediffdays{#1}{#2}%
-  \setcounter{diffyears}{\value{diffdays}/365}%
-  \setcounter{diffdays}{\value{diffdays}-365*\value{diffyears}}%
-  \setcounter{diffmonths}{\value{diffdays}/30}%
-  \setcounter{diffdays}{\value{diffdays}-30*\value{diffmonths}}%
+  \setcounter{diffyears}{\value{diffdays}/\real{365.25}}%
+  \setcounter{diffdays}{\value{diffdays}-\value{diffyears}*\real{365.25}}%
+  \setcounter{diffmonths}{\value{diffdays}/\real{30.43}}%
+  \setcounter{diffdays}{\value{diffdays}-\value{diffmonths}*\real{30.43}}%
   %
   \ifnum\value{diffyears}=0
   \else
@@ -80,7 +80,7 @@
 }
 \newcommand{\displayyearsdiff}[2]{%
   \setdatediffdays{#1}{#2}%
-  \setcounter{diffyears}{\value{diffdays}/365}%
+  \setcounter{diffyears}{\value{diffdays}/\real{365.25}}%
   \ifnum\value{diffyears}=0
   \else
     \thediffyears\space year\ifnum\value{diffyears}>1s\fi
