@@ -48,4 +48,4 @@ jobs:
             destination_folder: 'assets'
             user_email: 'max.powis@gmail.com'
             user_name: 'maxpowis'
-            commit_message: 'Push latest cv release'
+            commit_message: '"Push latest cv release"'
