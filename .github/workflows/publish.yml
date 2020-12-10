@@ -1,0 +1,28 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 1 * *"
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: cv.tex
+          latexmk_use_lualatex: true
+      - name: Publish to website
+        uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.COPY_FILE_TO_ANOTHER_REPO_ACTION }}
+        with:
+          source_file: 'cv.pdf'
+          destination_repo: 'maxpowis/maxpowis.github.io'
+          destination_folder: 'assets'
+          user_email: 'max.powis@gmail.com'
+          user_name: 'maxpowis'
