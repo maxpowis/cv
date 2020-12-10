@@ -13,7 +13,7 @@ on:
     - cron: "0 0 1 * *"
 
 jobs:
-  build_latex:
+  publish_pdf:
     runs-on: ubuntu-latest
     steps:
       - name: Set variables
@@ -31,10 +31,10 @@ jobs:
       - name: Download cv.pdf
         uses: Legion2/download-release-action@v2.1.0
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           repository: Legion2/private-repo
           tag: ${{ steps.cv_release.outputs.release }}
           file: cv.pdf
-          token: ${{ secrets.SECRET_NAME }}
       - name: Publish to website
         uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
         env:
