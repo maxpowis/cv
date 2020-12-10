@@ -29,7 +29,7 @@ jobs:
           repository: "maxpowis/cv"
           type: ${{ env.RELEASE_TYPE }}
       - name: Print latest release
-        run: Echo "Found tag for (${{ env.RELEASE_TYPE }}) release >> ${{ steps.cv_release.outputs.release }}"
+        run: echo "Found tag for (${{ env.RELEASE_TYPE }}) release >> ${{ steps.cv_release.outputs.release }}"
       - name: Download cv.pdf
         uses: Legion2/download-release-action@v2.1.0
         with:
