@@ -1,7 +1,14 @@
-name: Publish release to website
+name: Publish PDF release to website
 
 on:
   workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release type (stable, prerelease or latest)'     
+        required: true
+        default: 'latest'
+  repository_dispatch:
+    types: [dispatch_publish]
   schedule:
     - cron: "0 0 1 * *"
 
@@ -9,13 +16,25 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+      - name: Set variables
+        env:
+          DEFAULT_RELEASE_TYPE: latest
+        run: |
+          echo "RELEASE_TYPE=${{ github.event.inputs.release_type || env.DEFAULT_RELEASE_TYPE }}" >> $GITHUB_ENV
+      - name: Get the latest release
+        uses: rez0n/actions-github-release@main
+        id: cv_release
+        env:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: "maxpowis/cv"
+          type: ${{ env.RELEASE_TYPE }}
+      - name: Download cv.pdf
+        uses: Legion2/download-release-action@v2.1.0
         with:
-          root_file: cv.tex
-          latexmk_use_lualatex: true
+          repository: Legion2/private-repo
+          tag: ${{ steps.cv_release.outputs.release }}
+          file: cv.pdf
+          token: ${{ secrets.SECRET_NAME }}
       - name: Publish to website
         uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
         env:

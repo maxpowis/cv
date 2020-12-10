@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       tags:
-        description: 'Version'     
+        description: 'Version'
         required: true
         default: 'v1.0.0-alpha.00'
   push:
@@ -43,13 +43,8 @@ jobs:
           asset_path: ./cv.pdf
           asset_name: cv.pdf
           asset_content_type: application/pdf
-      - name: Publish to website
-        uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.COPY_FILE_TO_ANOTHER_REPO_ACTION }}
+      - name: Emit repository_dispatch
+        uses: mvasigh/dispatch-action@main
         with:
-          source_file: 'cv.pdf'
-          destination_repo: 'maxpowis/maxpowis.github.io'
-          destination_folder: 'assets'
-          user_email: 'max.powis@gmail.com'
-          user_name: 'maxpowis'
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          event_type: dispatch_publish
