@@ -21,9 +21,10 @@ jobs:
       - name: Get version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Echo release.dat
+        run: echo "Writing 'version = ${{ steps.get_version.outputs.VERSION }}' to release.dat"
       - name: Update release.dat
         uses: "finnp/create-file-action@master"
-        run: echo "Writing 'version = ${{ steps.get_version.outputs.VERSION }}' to release.dat"
         env:
           FILE_NAME: "release.dat"
           FILE_DATA: "version = ${{ steps.get_version.outputs.VERSION }}"
