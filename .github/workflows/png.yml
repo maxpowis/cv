@@ -1,0 +1,41 @@
+name: Convert PDF to PNG
+
+on:
+  workflow_dispatch:
+
+jobs:
+  convert_png:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set variables
+        env:
+          DEFAULT_RELEASE_TYPE: latest
+        run: |
+          echo "RELEASE_TYPE=${{ github.event.inputs.release_type || env.DEFAULT_RELEASE_TYPE }}" >> $GITHUB_ENV
+      - name: Get the release
+        uses: rez0n/actions-github-release@main
+        id: cv_release
+        env:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: "maxpowis/cv"
+          type: ${{ env.RELEASE_TYPE }}
+      - name: Echo release tag name
+        run: echo "Found tag for (${{ env.RELEASE_TYPE }}) release >> ${{ steps.cv_release.outputs.release }}"
+      - name: Download cv.pdf from release
+        uses: Legion2/download-release-action@v2.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: "maxpowis/cv"
+          tag: ${{ steps.cv_release.outputs.release }}
+          file: cv.pdf
+      - name: ImageMagick convert pdf to png
+        uses: jruipinto/ImageMagick-action@v1
+        with:
+          # ImageMagick command to be executed
+          command: convert.exe -verbose -density 300 cv.pdf -scale 82x112 .\converted\cv-%d.png
+      - name: Upload png's
+        uses: actions/upload-artifact@v2
+        with:
+          name: png
+          path: converted
+          if-no-files-found: error
