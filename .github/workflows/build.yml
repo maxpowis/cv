@@ -14,6 +14,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Echo release.dat
+        run: echo "Writing 'version = build-${{ github.run_id }}-${{ github.run_number }}' to release.dat"
+      - name: Update release.dat
+        uses: "finnp/create-file-action@master"
+        env:
+          FILE_NAME: "release.dat"
+          FILE_DATA: "version = build-${{ github.run_id }}-${{ github.run_number }}"
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
