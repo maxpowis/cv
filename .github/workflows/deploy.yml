@@ -13,7 +13,7 @@ on:
     - cron: "0 0 1 * *"
 
 jobs:
-  publish_pdf:
+  deploy_web:
     runs-on: ubuntu-latest
     steps:
       - name: Set variables
@@ -21,20 +21,20 @@ jobs:
           DEFAULT_RELEASE_TYPE: latest
         run: |
           echo "RELEASE_TYPE=${{ github.event.inputs.release_type || env.DEFAULT_RELEASE_TYPE }}" >> $GITHUB_ENV
-      - name: Get the latest release
+      - name: Get the release
         uses: rez0n/actions-github-release@main
         id: cv_release
         env:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
           type: ${{ env.RELEASE_TYPE }}
-      - name: Print latest release
+      - name: Echo release tag name
         run: echo "Found tag for (${{ env.RELEASE_TYPE }}) release >> ${{ steps.cv_release.outputs.release }}"
-      - name: Download cv.pdf
+      - name: Download cv.pdf from release
         uses: Legion2/download-release-action@v2.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          repository: Legion2/private-repo
+          repository: "maxpowis/cv"
           tag: ${{ steps.cv_release.outputs.release }}
           file: cv.pdf
       - name: Publish to website
