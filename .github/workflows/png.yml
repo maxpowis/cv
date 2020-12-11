@@ -32,7 +32,7 @@ jobs:
         uses: jruipinto/ImageMagick-action@v1
         with:
           # ImageMagick command to be executed
-          command: convert -verbose -background white -alpha remove -alpha off cv.pdf -scale 20% cv-%02d.png
+          command: convert -verbose -background white -alpha remove -alpha off cv.pdf cv-%02d.png
       - name: Upload png's
         uses: actions/upload-artifact@v2
         with:
