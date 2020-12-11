@@ -2,6 +2,11 @@ name: Convert PDF to PNG
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_flag:
+        description: 'Publish to website (true/false)'     
+        required: false
+        default: 'false'
 
 jobs:
   convert_png:
@@ -27,13 +32,24 @@ jobs:
           repository: "maxpowis/cv"
           tag: ${{ steps.cv_release.outputs.release }}
           file: cv.pdf
-      - name: ImageMagick convert pdf to png
+      - name: Convert pdf to png (ImageMagick)
         uses: jruipinto/ImageMagick-action@v1
         with:
-          # ImageMagick command to be executed
-          command: convert -verbose -background white -alpha remove -alpha off -density 600 -scale 10% cv.pdf cv-%02d.png
-      - name: Upload png's
+          command: convert -verbose -background white -alpha remove -alpha off -density 600 -scale 10% cv.pdf img/cv-%02d.png
+      - name: Upload png artifacts to worflow
         uses: actions/upload-artifact@v2
         with:
-          path: ./*.png
+          path: img/*.png
           if-no-files-found: error
+      - name: Publish png's to website
+        uses: crykn/copy_folder_to_another_repo_action@v1.0.5
+        if: ${{ github.event.inputs.publish_flag }}
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.COPY_FILE_TO_ANOTHER_REPO_ACTION }}
+        with:
+          source_folder: 'img'
+          destination_repo: 'maxpowis/maxpowis.github.io'
+          destination_folder: 'assets'
+          user_email: 'max.powis@gmail.com'
+          user_name: 'maxpowis'
+          commit_msg: 'Update the cv.pdf thumbnails'
