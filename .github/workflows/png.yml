@@ -36,5 +36,5 @@ jobs:
       - name: Upload png's
         uses: actions/upload-artifact@v2
         with:
-          path: *.png
+          path: ./*.png
           if-no-files-found: error
