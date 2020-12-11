@@ -32,10 +32,9 @@ jobs:
         uses: jruipinto/ImageMagick-action@v1
         with:
           # ImageMagick command to be executed
-          command: convert -verbose -density 300 cv.pdf -scale 82x112 .\converted\cv-%d.png
+          command: convert -verbose -density 300 cv.pdf -resize 25% ./converted/cv-%04d.png
       - name: Upload png's
         uses: actions/upload-artifact@v2
         with:
-          name: png
           path: converted
           if-no-files-found: error
