@@ -37,7 +37,7 @@ jobs:
           echo $SOURCE_TAG
           echo $SOURCE_TAG2
           echo $SOURCE_TAG3
-      - name: Set vrelease name based on originating event
+      - name: Set release name based on originating event
         id: get_version
         env:
           EVENT_NAME: ${{ github.event_name }}
@@ -45,8 +45,10 @@ jobs:
           SOURCE_TAG2: ${{ steps.github_ref.outputs.SOURCE_TAG2 }}
           GIT_BUILD: build-${{ github.run_id }}-${{ github.run_number }}
         run: |
-          $output=(perl -e 'print ($ENV{EVENT_NAME} eq workflow_dispatch)?$ENV{INPUT_VERSION}:$ENV{SOURCE_TAG2};')
-          Write-Output "::set-output name=VERSION::$output"
+          $output=(perl -e 'print ($EVENT_NAME eq workflow_dispatch)?$INPUT_VERSION:$SOURCE_TAG2;')
+          echo ::set-output name=VERSION::$output"
+      - name: Echo release name
+        run: echo "release name is '${{ needs.version.get_version.outputs.VERSION }}'"
   release:
     needs: version
     runs-on: ubuntu-latest
