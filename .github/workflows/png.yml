@@ -47,7 +47,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.COPY_FILE_TO_ANOTHER_REPO_ACTION }}
         with:
-          source_folder: 'img'
+          source_folder: '.'
           destination_repo: 'maxpowis/maxpowis.github.io'
           destination_folder: 'assets/img'
           user_email: 'max.powis@gmail.com'
