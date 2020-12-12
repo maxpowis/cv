@@ -22,9 +22,10 @@ jobs:
         id: get_version
         env:
           GIT_REF: ${GITHUB_REF/refs\/tags\//}
+          INPUT_VERSION: ${{ github.event.inputs.tags }}
           GIT_BUILD: build-${{ github.run_id }}-${{ github.run_number }}
         run: |
-          $output=(perl -e 'print ($ENV{GIT_REF} =~ /\//)?$ENV{GIT_REF}:$ENV{GIT_BUILD};')
+          $output=(perl -e 'print ($ENV{GIT_REF} =~ /\//)?$ENV{GIT_BUILD}:$ENV{GIT_REF};')
           Write-Output "::set-output name=VERSION::$output"
       - name: Echo release.dat
         run: echo "Writing 'version = ${{ steps.get_version.outputs.VERSION }}' to release.dat"
