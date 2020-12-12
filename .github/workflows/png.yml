@@ -44,7 +44,7 @@ jobs:
           path: cv/*.png
           if-no-files-found: error
       - name: Publish png's to website
-        uses: crykn/copy_folder_to_another_repo_action@v1.0.5
+        uses: crykn/copy_folder_to_another_repo_action@master
         if: ${{ github.event.inputs.publish_flag=='true'}}
         env:
           API_TOKEN_GITHUB: ${{ secrets.COPY_FILE_TO_ANOTHER_REPO_ACTION }}
