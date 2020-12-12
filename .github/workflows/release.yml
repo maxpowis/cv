@@ -15,6 +15,7 @@ on:
 jobs:
   version:
     runs-on: ubuntu-latest
+    steps:
       - name: Explode GITHUB_REF
         id: github_ref
         run: |
@@ -41,7 +42,7 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           INPUT_VERSION: ${{ github.event.inputs.tags }}
-          SOURCE_TAG2: ${{ steps.branch_name.outputs.SOURCE_TAG2 }}
+          SOURCE_TAG2: ${{ steps.github_ref.outputs.SOURCE_TAG2 }}
           GIT_BUILD: build-${{ github.run_id }}-${{ github.run_number }}
         run: |
           $output=(perl -e 'print ($ENV{EVENT_NAME} eq workflow_dispatch)?$ENV{INPUT_VERSION}:$ENV{SOURCE_TAG2};')
@@ -53,12 +54,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Echo release.dat
-        run: echo "Writing 'version = ${{ steps.get_version.outputs.VERSION }}' to release.dat"
+        run: echo "Writing 'version = ${{ needs.version.get_version.outputs.VERSION }}' to release.dat"
       - name: Update release.dat
         uses: "finnp/create-file-action@master"
         env:
           FILE_NAME: "release.dat"
-          FILE_DATA: "version = ${{ steps.get_version.outputs.VERSION }}"
+          FILE_DATA: "version = ${{ needs.version.get_version.outputs.VERSION }}"
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
