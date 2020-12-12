@@ -36,7 +36,6 @@ jobs:
         uses: jruipinto/ImageMagick-action@v1
         with:
           command: convert -verbose -background white -alpha remove -alpha off -density 600 -scale 10% cv.pdf cv-%02d.png
-
       - name: Move PNG's in isolated directory
         run: mkdir --parents cv; mv *.png $_
       - name: Upload png artifacts to worflow
@@ -46,7 +45,7 @@ jobs:
           if-no-files-found: error
       - name: Publish png's to website
         uses: crykn/copy_folder_to_another_repo_action@v1.0.5
-        if: ${{ github.event.inputs.publish_flag }}
+        if: ${{ github.event.inputs.publish_flag=='true'}}
         env:
           API_TOKEN_GITHUB: ${{ secrets.COPY_FILE_TO_ANOTHER_REPO_ACTION }}
         with:
