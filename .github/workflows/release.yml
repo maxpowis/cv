@@ -20,7 +20,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Get version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        run: |
+          $output=(perl -e 'print (${GITHUB_REF/refs\/tags\//} =~ /\//)?build-${{ github.run_id }}-${{ github.run_number }}:${GITHUB_REF/refs\/tags\//};')
+          Write-Output "::set-output name=VERSION::$output"
+        run: echo ::set-output name=VERSION::$output
       - name: Echo release.dat
         run: echo "Writing 'version = ${{ steps.get_version.outputs.VERSION }}' to release.dat"
       - name: Update release.dat
