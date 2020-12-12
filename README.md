@@ -10,5 +10,5 @@ Adapted from [Professional CV](https://github.com/hmemcpy/cv) by Igal Tabachnik.
 
 Page 1 | Page 2 | Page 3
 :--------------:|:---------------:|:---------------:
-![cv1](https://max.pow.is/assets/img/cv-00.png)| ![cv2](https://max.pow.is/assets/img/cv-01.png)| ![cv3](https://max.pow.is/assets/img/cv-02.png)
+![cv1](https://max.pow.is/assets/img/cv/cv-00.png)| ![cv2](https://max.pow.is/assets/img/cv/cv-01.png)| ![cv3](https://max.pow.is/assets/img/cv/cv-02.png)
 
