@@ -47,9 +47,9 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.COPY_FILE_TO_ANOTHER_REPO_ACTION }}
         with:
-          source_folder: '.'
+          source_folder: './'
           destination_repo: 'maxpowis/maxpowis.github.io'
-          destination_folder: 'assets/img'
+          destination_folder: 'assets/img/cv'
           user_email: 'max.powis@gmail.com'
           user_name: 'maxpowis'
           commit_msg: 'Update the cv.pdf thumbnails'
