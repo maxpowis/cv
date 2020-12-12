@@ -13,21 +13,45 @@ on:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
-  release:
+  version:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Get version
+      - name: Explode GITHUB_REF
+        id: github_ref
+        run: |
+          echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
+          echo ::set-output name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
+          echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
+          echo ::set-output name=SOURCE_TAG2::${GITHUB_REF/refs\/tags\//}
+          echo ::set-output name=SOURCE_TAG3::${GITHUB_REF##*/}
+      - name: Echo GITHUB_REF parts
+        env:
+          SOURCE_NAME: ${{ steps.github_ref.outputs.SOURCE_NAME }}
+          SOURCE_BRANCH: ${{ steps.github_ref.outputs.SOURCE_BRANCH }}
+          SOURCE_TAG: ${{ steps.github_ref.outputs.SOURCE_TAG }}
+          SOURCE_TAG2: ${{ steps.github_ref.outputs.SOURCE_TAG2 }}
+          SOURCE_TAG3: ${{ steps.github_ref.outputs.SOURCE_TAG3 }}
+        run: |
+          echo $SOURCE_NAME
+          echo $SOURCE_BRANCH
+          echo $SOURCE_TAG
+          echo $SOURCE_TAG2
+          echo $SOURCE_TAG3
+      - name: Set vrelease name based on originating event
         id: get_version
         env:
           EVENT_NAME: ${{ github.event_name }}
           INPUT_VERSION: ${{ github.event.inputs.tags }}
-          GIT_REF: ${GITHUB_REF}
+          SOURCE_TAG2: ${{ steps.branch_name.outputs.SOURCE_TAG2 }}
           GIT_BUILD: build-${{ github.run_id }}-${{ github.run_number }}
         run: |
-          $output=(perl -e 'print ($ENV{EVENT_NAME} eq workflow_dispatch)?$ENV{INPUT_VERSION}:$ENV{GIT_REF};')
+          $output=(perl -e 'print ($ENV{EVENT_NAME} eq workflow_dispatch)?$ENV{INPUT_VERSION}:$ENV{SOURCE_TAG2};')
           Write-Output "::set-output name=VERSION::$output"
+  release:
+    needs: version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Echo release.dat
         run: echo "Writing 'version = ${{ steps.get_version.outputs.VERSION }}' to release.dat"
       - name: Update release.dat
