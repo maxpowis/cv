@@ -92,5 +92,5 @@ jobs:
       - name: Trigger workflow 'Publish PDF release to website'
         uses: mvasigh/dispatch-action@main
         with:
-          token: ${{ secrets.GITHUB_REPO_WORKFLOW }}
+          token: ${{ secrets.MAXPOWIS_REPO_WORKFLOW }}
           event_type: dispatch_publish
