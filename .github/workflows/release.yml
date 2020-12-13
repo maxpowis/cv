@@ -15,6 +15,8 @@ on:
 jobs:
   version:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.VERSION }}
     steps:
       - name: Explode GITHUB_REF
         id: github_ref
@@ -45,10 +47,10 @@ jobs:
           SOURCE_TAG2: ${{ steps.github_ref.outputs.SOURCE_TAG2 }}
           GIT_BUILD: build-${{ github.run_id }}-${{ github.run_number }}
         run: |
-          $output=(perl -e 'print ($EVENT_NAME eq workflow_dispatch)?$INPUT_VERSION:$SOURCE_TAG2;')
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then output="$INPUT_VERSION"; else output="$SOURCE_TAG2"; fi
           echo ::set-output name=VERSION::$output"
       - name: Echo release name
-        run: echo "release name is '${{ needs.version.get_version.outputs.VERSION }}'"
+        run: echo "release name evaluated to '${{ steps.get_version.outputs.VERSION }}'"
   release:
     needs: version
     runs-on: ubuntu-latest
@@ -56,12 +58,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Echo release.dat
-        run: echo "Writing 'version = ${{ needs.version.get_version.outputs.VERSION }}' to release.dat"
+        run: echo "Writing 'version = ${{ needs.version.outputs.version }}' to release.dat"
       - name: Update release.dat
         uses: "finnp/create-file-action@master"
         env:
           FILE_NAME: "release.dat"
-          FILE_DATA: "version = ${{ needs.version.get_version.outputs.VERSION }}"
+          FILE_DATA: "version = ${{ needs.version.outputs.version }}"
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
