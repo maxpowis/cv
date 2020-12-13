@@ -48,7 +48,7 @@ jobs:
           GIT_BUILD: build-${{ github.run_id }}-${{ github.run_number }}
         run: |
           if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then output="$INPUT_VERSION"; else output="$SOURCE_TAG2"; fi
-          echo ::set-output name=VERSION::$output"
+          echo ::set-output name=VERSION::$output
       - name: Echo release name
         run: echo "release name evaluated to '${{ steps.get_version.outputs.VERSION }}'"
   release:
