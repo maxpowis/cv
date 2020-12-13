@@ -40,7 +40,7 @@ jobs:
       - name: Publish to website
         uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
         env:
-          API_TOKEN_GITHUB: ${{ secrets.COPY_FILE_TO_ANOTHER_REPO_ACTION }}
+          API_TOKEN_GITHUB: ${{ secrets.GITHUB_REPO_WORKFLOW }}
         with:
           source_file: 'cv.pdf'
           destination_repo: 'maxpowis/maxpowis.github.io'

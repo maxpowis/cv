@@ -89,8 +89,8 @@ jobs:
           asset_path: ./cv.pdf
           asset_name: cv.pdf
           asset_content_type: application/pdf
-      - name: Emit repository_dispatch
+      - name: Trigger workflow 'Publish PDF release to website'
         uses: mvasigh/dispatch-action@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_REPO_WORKFLOW }}
           event_type: dispatch_publish
