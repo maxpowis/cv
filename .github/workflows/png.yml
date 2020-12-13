@@ -47,7 +47,7 @@ jobs:
         uses: crykn/copy_folder_to_another_repo_action@master
         if: ${{ github.event.inputs.publish_flag=='true'}}
         env:
-          API_TOKEN_GITHUB: ${{ secrets.MAXPOWIS_REPO_WORKFLOW }}
+          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN_REPO_WORKFLOW }}
         with:
           source_folder: 'cv'
           destination_repo: 'maxpowis/maxpowis.github.io'

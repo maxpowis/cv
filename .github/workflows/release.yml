@@ -21,33 +21,20 @@ jobs:
       - name: Explode GITHUB_REF
         id: github_ref
         run: |
-          echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
-          echo ::set-output name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
-          echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
-          echo ::set-output name=SOURCE_TAG2::${GITHUB_REF/refs\/tags\//}
-          echo ::set-output name=SOURCE_TAG3::${GITHUB_REF##*/}
+          echo ::set-output name=PUSH_TAG::${GITHUB_REF/refs\/tags\//}
       - name: Echo GITHUB_REF parts
         env:
-          SOURCE_NAME: ${{ steps.github_ref.outputs.SOURCE_NAME }}
-          SOURCE_BRANCH: ${{ steps.github_ref.outputs.SOURCE_BRANCH }}
-          SOURCE_TAG: ${{ steps.github_ref.outputs.SOURCE_TAG }}
-          SOURCE_TAG2: ${{ steps.github_ref.outputs.SOURCE_TAG2 }}
-          SOURCE_TAG3: ${{ steps.github_ref.outputs.SOURCE_TAG3 }}
+          PUSH_TAG: ${{ steps.github_ref.outputs.PUSH_TAG }}
         run: |
-          echo $SOURCE_NAME
-          echo $SOURCE_BRANCH
-          echo $SOURCE_TAG
-          echo $SOURCE_TAG2
-          echo $SOURCE_TAG3
+          echo $PUSH_TAG
       - name: Set release name based on originating event
         id: get_version
         env:
           EVENT_NAME: ${{ github.event_name }}
           INPUT_VERSION: ${{ github.event.inputs.tags }}
-          SOURCE_TAG2: ${{ steps.github_ref.outputs.SOURCE_TAG2 }}
-          GIT_BUILD: build-${{ github.run_id }}-${{ github.run_number }}
+          PUSH_TAG: ${{ steps.github_ref.outputs.PUSH_TAG }}
         run: |
-          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then output="$INPUT_VERSION"; else output="$SOURCE_TAG2"; fi
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then output="$INPUT_VERSION"; else output="$PUSH_TAG"; fi
           echo ::set-output name=VERSION::$output
       - name: Echo release name
         run: echo "release name evaluated to '${{ steps.get_version.outputs.VERSION }}'"
@@ -93,5 +80,5 @@ jobs:
         uses: mvasigh/dispatch-action@main
         if: ${{ github.event_name=='push' }}
         with:
-          token: ${{ secrets.MAXPOWIS_REPO_WORKFLOW }}
+          token: ${{ secrets.PERSONAL_TOKEN_REPO_WORKFLOW }}
           event_type: dispatch_publish
