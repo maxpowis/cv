@@ -4,7 +4,7 @@
 
 Contains the LaTeX source for my CV.
 
-You can find me on [![Twitter][1.2]][1], or on [![LinkedIn][3.2]][3].
+You can find me on <img width="16px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" href= "https://be.linkedin.com/in/maxpowis"/>.
 
 ## Features
 
@@ -13,9 +13,10 @@ The source code was forked and adapted from [Professional CV](https://github.com
 Peronal add-ons:
 
 * Github actions for build & release
+* Generate thumbnails for diplay in this readme
 * helpers for employer & job records
 * compute age and experience durations
-* Github relaese version embedded in the pdf
+* Github release version embedded in the pdf
 
 ## Preview
 
@@ -29,36 +30,25 @@ Page 1 | Page 2 | Page 3
 Build with lualatex due to some known issues with FontAwesome.
 
 ### Prerequisites
-Lualatex can be installed easily as part of [TexLive](https://www.tug.org/texlive/quickinstall.html)
+Lualatex can be installed easily as part of **[TexLive](https://www.tug.org/texlive/quickinstall.html)**
+A package is also available for Windows but I prefer using a **WSL2** which is pretty well integrated with **VSCode**
 
 ### Setting up Dev
 
-I personally use VSCode with a WSL2-debian for development and testing tasks.
-
-Setup the debian WSL2 instance as follows:
+*On debian*, the following packages must be installed
 
 ```shell
 sudo apt install git texlive texlive-luatex texlive-fonts-extra
 ```
 
-The open the cloned project in the WSL2-debian context
+*On windows*, setup the debian instance as described above then open the cloned project in the WSL2 context
 
 ### Building
 
-Building is just a matter of clicking the build button in VSCode in this setup.
+Building is just a matter of clicking the build button in VSCode in the VSCode setup.
 
-Note the github project comme with some release managemnt workflows:
-* build.yml: builds the cv.tex project with lualatex
-* release.yml: build and release to the repo releases
-* deploy.yml: copies the latest pdf release to a github pages site repo.
-* png.yml: generates thumbnails to be embedded in this README
-
-<!-- Icons -->
-
-[1.2]: http://i.imgur.com/wWzX9uB.png (twitter icon without padding)
-[2.2]: https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/linkedin-3-16.png (LinkedIn icon without padding)
-
-<!-- Links to your social media accounts -->
-
-[1]: https://twitter.com/maxpowis
-[2]: https://be.linkedin.com/in/maxpowis
+Note the github project comes with some nice github actions:
+* **build.yml**: builds the cv.tex project with lualatex
+* **release.yml**: build and release to the repo releases
+* **deploy.yml**: copies the latest pdf release to a github pages site repo
+* **png.yml**: generates thumbnails to be embedded in this README
