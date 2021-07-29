@@ -10,11 +10,12 @@ The source code was forked and adapted from [Professional CV](https://github.com
 
 Peronal add-ons:
 
-* Github actions for build & release
-* Generate thumbnails for diplay in this readme
-* helpers for employer & job records
-* compute age and experience durations
-* Github release version embedded in the pdf
+* compute age
+* helpers for employer & job records with computed experience durations
+* GitHub actions
+  * build & release with version numbering embedded in the generated pdf
+  * publish latest release to my  GitHub    static site repo
+  * generate thumbnails (automatically pushed to my  GitHub   static site repo and embedded in this README)
 
 ## Preview
 
