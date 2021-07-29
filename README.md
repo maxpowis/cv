@@ -28,7 +28,9 @@ Page 1 | Page 2 | Page 3
 Build with lualatex due to some known issues with FontAwesome.
 
 ### Prerequisites
+
 Lualatex can be installed easily as part of **[TexLive](https://www.tug.org/texlive/quickinstall.html)**
+
 A package is also available for Windows but I prefer using a **WSL2** which is pretty well integrated with **VSCode**
 
 ### Setting up Dev
