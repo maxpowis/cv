@@ -4,7 +4,7 @@
 
 Contains the LaTeX source for my CV.
 
-You can find me on <img width="16px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" href= "https://be.linkedin.com/in/maxpowis"/>.
+You can find me on <img width="16px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" href="https://be.linkedin.com/in/maxpowis" />.
 
 ## Features
 
