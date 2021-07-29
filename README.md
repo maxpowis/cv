@@ -4,8 +4,6 @@
 
 Contains the LaTeX source for my CV.
 
-You can find me on <img width="16px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" href="https://be.linkedin.com/in/maxpowis" />.
-
 ## Features
 
 The source code was forked and adapted from [Professional CV](https://github.com/hmemcpy/cv) by Igal Tabachnik.
@@ -48,7 +46,7 @@ sudo apt install git texlive texlive-luatex texlive-fonts-extra
 Building is just a matter of clicking the build button in VSCode in the VSCode setup.
 
 Note the github project comes with some nice github actions:
-* **build.yml**: builds the cv.tex project with lualatex
-* **release.yml**: build and release to the repo releases
-* **deploy.yml**: copies the latest pdf release to a github pages site repo
-* **png.yml**: generates thumbnails to be embedded in this README
+* [![Build (Lualatex)](https://github.com/maxpowis/cv/actions/workflows/build.yml/badge.svg)](https://github.com/maxpowis/cv/actions/workflows/build.yml): builds the cv.tex project with lualatex
+* [![Create Release](https://github.com/maxpowis/cv/actions/workflows/release.yml/badge.svg)](https://github.com/maxpowis/cv/actions/workflows/release.yml): build and release to the repo releases
+* [![Publish PDF release to website](https://github.com/maxpowis/cv/actions/workflows/deploy.yml/badge.svg)](https://github.com/maxpowis/cv/actions/workflows/deploy.yml): copies the latest pdf release to a github pages site repo
+* [![Convert PDF to PNG](https://github.com/maxpowis/cv/actions/workflows/png.yml/badge.svg)](https://github.com/maxpowis/cv/actions/workflows/png.yml): generates thumbnails to be embedded in this README
