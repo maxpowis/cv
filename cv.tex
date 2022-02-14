@@ -17,7 +17,7 @@
 \DTLloaddb[noheader, keys={release_key,release_value}]{release}{release.dat}
 \newcommand{\getreleaseinfo}[1]{\DTLfetch{release}{release_key}{#1}{release_value}}
 \pagestyle{fancy}
-\fancyfoot[L]{Max Powis}
+\fancyfoot[L]{\faMeanpath{} Max Powis}
 \fancyfoot[C]{Page \thepage\ of \pageref*{LastPage}}
 \fancyfoot[R]{\getreleaseinfo{version} - \today}
 \renewcommand{\footrulewidth}{0.4pt}% default is 0pt
