@@ -17,7 +17,7 @@
 \DTLsetseparator{ = }
 \DTLloaddb[noheader, keys={release_key,release_value}]{release}{release.dat}
 \newcommand{\getreleaseinfo}[1]{\DTLfetch{release}{release_key}{#1}{release_value}}
-\def\getreleaseversion{v\getreleaseinfo{version}}
+\def\getreleaseversion{\getreleaseinfo{version}}
 % TODO: Find a way to add the release version to the url
 \def\getreleaseurl{https://github.com/maxpowis/cv/releases/}
 \pagestyle{fancy}
