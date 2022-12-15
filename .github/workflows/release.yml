@@ -21,12 +21,12 @@ jobs:
       - name: Explode GITHUB_REF
         id: github_ref
         run: |
-          echo ::set-output name=PUSH_TAG::${GITHUB_REF/refs\/tags\//}
+          echo "PUSH_TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
       - name: Echo GITHUB_REF parts
         env:
           PUSH_TAG: ${{ steps.github_ref.outputs.PUSH_TAG }}
         run: |
-          echo $PUSH_TAG
+          echo "::debug::$PUSH_TAG"
       - name: Set release name based on originating event
         id: get_version
         env:
@@ -35,9 +35,9 @@ jobs:
           PUSH_TAG: ${{ steps.github_ref.outputs.PUSH_TAG }}
         run: |
           if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then output="$INPUT_VERSION"; else output="$PUSH_TAG"; fi
-          echo ::set-output name=VERSION::$output
+          echo "VERSION=$output" >> $GITHUB_OUTPUT
       - name: Echo release name
-        run: echo "release name evaluated to '${{ steps.get_version.outputs.VERSION }}'"
+        run: echo "::debug::release name evaluated to '${{ steps.get_version.outputs.VERSION }}'"
   release:
     needs: version
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Echo release.dat
-        run: echo "Writing 'version = ${{ needs.version.outputs.version }}' to release.dat"
+        run: echo "::debug::Writing 'version = ${{ needs.version.outputs.version }}' to release.dat"
       - name: Update release.dat
         uses: "finnp/create-file-action@master"
         env:
