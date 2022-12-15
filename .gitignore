@@ -9,4 +9,5 @@
 *.aux
 *.synctex(busy)
 *.out
+*.dvi
 release.dat
