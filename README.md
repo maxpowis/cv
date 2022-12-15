@@ -1,7 +1,7 @@
 ![repo size](https://img.shields.io/github/repo-size/maxpowis/cv)
 ![license](https://img.shields.io/github/license/maxpowis/cv)
 ![last commit](https://img.shields.io/github/last-commit/maxpowis/cv)
-![dependabot](https://badgen.net/dependabot/badgen/maxpowis/cv?icon=dependabot)
+![dependabot](https://flat.badgen.net/dependabot/maxpowis/cv?icon=dependabot)
 
 Contains the LaTeX source for my CV.
 
