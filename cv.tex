@@ -5,6 +5,7 @@
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{libertine}
 \usepackage{fontawesome5}
+\usepackage{array}
 \usepackage{longtable}
 \usepackage{parskip}
 \usepackage[cm]{fullpage}
@@ -98,7 +99,7 @@
   \textsc{\displayshortmonth{#4}}%
   \setdatediffdays{#5}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}%
   \ifnum\value{diffdays}=0
-    >> Present
+    \faLongArrowAltRight{} Present
   \else
     -- 
     \textsc{\displayshortmonth{#5}}
@@ -130,27 +131,41 @@
   \centering{
     \Huge \textsc{Max Powis}\par
     \large \textsc{Data Expert}\par
-    \small \textsc{(\displayage{1982-11-07} )}
+    \small \textsc{(\displayage{1982-11-07} )}\par
+    \textsc{Data is gold but often looks awful. I am passionate about using technology\linebreak
+    to making it accessible and beautifully shaped to maximize business efficiency.}\par
   }
   \bigskip\par
 }
 
 \hrule
 \vspace{0.5em}
-\begin{tabular}{rl}
-  \textsc{Phone:}     & +32 499 67 37 67\\
-  \textsc{Email:}     & \href{mailto:max@pow.is}{max@pow.is}\\
-  \textsc{Socials:}   & \faFirefox{} \href{https://max.pow.is}{https://max.pow.is} 
-                      | \faTwitter{} \href{https://twitter.com/maxpowis}{twitter} 
-                      | \faLinkedin{} \href{https://www.linkedin.com/in/maxpowis/}{linkedin}
-                      | \faGithub{} \href{https://github.com/maxpowis}{github}
-%                      | \faStackOverflow{} \href{https://stackoverflow.com/users/8205/igal-tabachnik}{stackoverflow}
+
+\begin{center}
+\newcolumntype{x}[1]{>{\centering\arraybackslash}m{#1}}
+\begin{tabular}{ cx{14em} cx{14em} cx{14em} }
+  \textsc{Contact} 
+  & \textsc{Website} 
+  & \textsc{Socials}\\
+  \faEnvelope[regular]{} \href{mailto:max@maxpowx.com}{max@maxpowx.com}
+  & \faGlobe{} \href{https://max.pow.is}{max.pow.is} 
+  & \faLinkedin{} \href{https://www.linkedin.com/in/maxpowis/}{linkedin}\\
+  \faMobile*{} \href{tel:0032499673767}{+32 499 67 37 67} 
+  & \faGlobe{} \href{https://www.maxpowx.com}{maxpowx.com}
+  & \faGithub{} \href{https://github.com/maxpowis}{github} \faTwitter{} \href{https://twitter.com/maxpowis}{twitter}
+% \faStackOverflow{} \href{https://stackoverflow.com/users/2239926/max-powis}{stackoverflow}
 \end{tabular}
+\end{center}
 
 \section{Summary}
-\begin{tabular}{p{0.9\textwidth}}
-  I'm a data engineer with deep functional and technical expertise in a wide range of data matters: data architecture, data governance,
-   data modeling, data integration, system integration, reference data, master data management and business analytics.\medskip
+\begin{tabular}{p{0.97\textwidth}}
+  I am passionate about data and technology. 
+   My deepest satisfaction lies in delivering highly efficient and modular solutions relying on strong data models 
+   for reuse across various data disciplines.\smallskip
+
+  Throughout my career, I have endorsed various positions involving data governance, data architecture, data modeling (data vaulting, 
+   dimensional modeling, unified star schemas, ...), data integration, system integration. reference/master data management and business 
+   analytics (reporting \& dashboarding).\medskip
 
   Interests: \sotag{data-modeling} \sotag{data-architecture} \sotag{data-integration} \sotag{data-warehouse-automation} \end{tabular}
 
@@ -159,9 +174,6 @@
   \joblogcurrent{Freelance Data Expert}{maxPowX}{Brussels, BE}{2019-01-07}
     &Consultant in data architecture, data modeling, data governance, data integration, system integration, reference data, 
      master data management and business analytics.\\\sep
-  
-  %\hline
-  %\multicolumn{2}{r}{\footnotesize\itshape (abbreviated work history below, see LinkedIn profile for full details)}\\\sep
 
   \joblog{Data Vault \& BI Expert}{dFakto}{Brussels, BE}{2012-10-01}{2019-01-04}
     &Having deep interest in data modeling and data management, I have been devoted to smoothening business processes 
@@ -172,6 +184,9 @@
     &Integrated enterprise applications (EAI) for major companies active in the telecommunication and banking industries.\\[4pt]
     &Extensive experience with offshore application delivery centers in Bratislava and Bangalore.\\[4pt]
     &Took part in the application design, implementation, test and delivery management of the Java technology based products.\\\sep
+  
+  %\hline
+  %\multicolumn{2}{r}{\footnotesize\itshape (abbreviated work history below, see LinkedIn profile for full details)}\\\sep
   
 \end{longtable}
 
@@ -217,7 +232,7 @@
   %\newpage
 
   \joblog{Data Vault Architect}{Aerospace Manufacturing C°}{Brussels, BE}{2018-03-01}{2019-01-31}
-    &\sotagtech{Data Vault} \sotagtech{Star Schema} \sotagtech{SQL Server} \sotagtech{(SQL Server) Master Data Services} 
+    &\sotagarch{Data Vault} \sotagarch{Star Schema} \sotagtech{SQL Server} \sotagtech{(SQL Server) Master Data Services} 
      \sotagtech{Docker} \sotagtech{Datavault Builder} \sotagtech{QlikSense} \sotagtech{PowerShell} \sotagtech{SAP HighSEA}\\[4pt]
     &Designed, engineered and delivered a full automated agile data management platform in 4 months. The platform included:
     \begin{itemize}
@@ -230,7 +245,7 @@
     &The Solution served 3 use cases such as on-time delivery, supply chain issue tracking and task pointing performance.\\\sep
   
   \joblog{Data Vault Architect}{Insurance C°}{Brussels, BE}{2014-11-01}{2018-03-31}
-    &\sotagtech{Data Vault} \sotagtech{Star Schema} \sotagtech{SQL Server} \sotagtech{Qlik View} \sotagtech{SSIS} 
+    &\sotagarch{Data Vault} \sotagarch{Star Schema} \sotagtech{SQL Server} \sotagtech{Qlik View} \sotagtech{SSIS} 
      \sotagtech{C\# .NET} \sotagtech{SQL Agent}\\[4pt]
     &Designed, engineered and delivered a data vault and various role-based dashboards serving the needs of 120+ IT project management stakholders\\[4pt]
     &Stakeholder roles included program managers, project managers, resource management, financial controllers, and more\\\sep
@@ -278,22 +293,21 @@
 \end{longtable}
 
 
-\section{Data Proficiency}
+\section{Data \& Technology Proficiency}
 \begin{tabular}{rl}
-  \textsc{Data Modeling:}& Conceptual ● Entity-Relationship (3NF) ● Data Vault ● \\
-  &Dimensional (Star \& Snowflake) ● Canonical \\
-  \textsc{RDBMS:}& SQL Server ● Oracle ● MariaDB/MySQL ● PostgreSQL \\
-  \textsc{Documents:}& JSON ● XML ● XSD ● CSV ● DTD \\
-  \textsc{DWH Automation:}& Data Vault Builder, WhereScape RED \\
-  \textsc{ETL:}& SSIS ● Talend\\
-  \textsc{Data Visulisation:}& QlikSense ● QlikView ● Business Objects \\
-  \textsc{API:}& REST ● RAML ● SOAP ● WSDL ● Swagger ● Postman\\
-  \textsc{IDE:}& Visual Studio ● VS Code ● Eclipse\\
-  \textsc{Tools:}& Jira ● Confluence ● GitLab\\
-  \textsc{Version Control:}& Git \\
-  \textsc{O/S / Virtualization:}& Windows ● Linux ● vSphere ● Docker\\
-  \textsc{Scripting}:&Bash ● PowerShell ● VBScript \\
-  \textsc{Programming}:&C\# ● Java ● Python\\
+  \textsc{Data Modeling:}& Conceptual — ER/3NF — Data Vault — Dimensional (\faStar[regular]{} \& \faSnowflake[regular]{}) — Canonical\\
+  \textsc{RDBMS:}& SQL Server — Oracle — MariaDB/MySQL — PostgreSQL\\
+  \textsc{Documents:}& JSON — JSONSchema — YAML — XML — XSD — CSV — DTD — HTML\\
+  \textsc{DWH Automation:}& Data Vault Builder, WhereScape RED\\
+  \textsc{ETL:}& SSIS — Talend\\
+  \textsc{Data Visulisation:}& QlikSense — QlikView — Business Objects\\
+  \textsc{API:}& REST — RAML — Swagger — Postman — SOAP — SoapUI — WSDL\\
+  \textsc{IDE:}& Visual Studio — VS Code — Eclipse\\
+  \textsc{Tools:}& Jira — Confluence — GitLab\\
+  \textsc{Version Control:}& Git\\
+  \textsc{O/S / Virtualization:}& Windows — Linux — vSphere — Docker\\
+  \textsc{Scripting}:&Bash — PowerShell — VBScript \\
+  \textsc{Programming}:&Python — C\# — Java\\
 \end{tabular}
 
 \section{Languages}
@@ -306,9 +320,9 @@
 \section{Specializations}
 \begin{tabular}{rl}
   \textsc{Courses:}
-  &Collibra Expert I ● Online (Credential ID: CELIC-20190131-1072)\\
-  &Certified Data Vault 2 Practioner (CDVP2) ● Dan Lindstedt (\href{https://max.pow.is/assets/5_2_12900_1435331244_CDVP2_Certificate.pdf}{certificate})\\
-  &Business Information using RED on SQL Server ● WhereScape
+  &Collibra Expert I — Online (Credential ID: CELIC-20190131-1072)\\
+  &Certified Data Vault 2 Practioner (CDVP2) — Dan Lindstedt (\href{https://max.pow.is/assets/5_2_12900_1435331244_CDVP2_Certificate.pdf}{certificate})\\
+  &Business Information using RED on SQL Server — WhereScape
 \end{tabular}
 
 \end{document}
