@@ -101,10 +101,10 @@
 \newcommand{\joblog}[5]{
   \textsc{\displayshortmonth{#4}}%
   \setdatediffdays{#5}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}%
+  \,\faLongArrowAltRight{}
   \ifnum\value{diffdays}=0
-    \faLongArrowAltRight{} Present
+    \textbf{\textit{Present}}
   \else
-    -- 
     \textsc{\displayshortmonth{#5}}
   \fi
   & \large\sffamily \textbf{#1} at \textbf{#2}, \small{#3}\smallskip\\\textit{(\displaymonthsdiff{#4}{#5} )}
