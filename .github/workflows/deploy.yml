@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "RELEASE_TYPE=${{ github.event.inputs.release_type || env.DEFAULT_RELEASE_TYPE }}" >> $GITHUB_ENV
       - name: Get the release
-        uses: rez0n/actions-github-release@main
+        uses: rez0n/actions-github-release@v1.8
         id: cv_release
         env:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -44,6 +44,7 @@ jobs:
         with:
           source_file: 'cv.pdf'
           destination_repo: 'maxpowis/maxpowis.github.io'
+          destination_branch: 'master'
           destination_folder: 'assets'
           user_email: 'max.powis@gmail.com'
           user_name: 'maxpowis'
