@@ -38,7 +38,7 @@ jobs:
           tag: ${{ steps.cv_release.outputs.release }}
           file: cv.pdf
       - name: Publish to website
-        uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
           API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN_REPO_WORKFLOW }}
         with:
