@@ -19,4 +19,4 @@ WipeArg
 # For example, code 24 warns when an index may be misplaced due
 # to spaces (page spillover).
 # code 9 and 17 warns [] and () not match
-CmdLine { -n 9 -n 17 -n 24 }
+CmdLine { -n 8 }

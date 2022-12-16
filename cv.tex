@@ -21,9 +21,9 @@
 % TODO: Find a way to add the release version to the url
 \def\getreleaseurl{https://github.com/maxpowis/cv/releases/}
 \pagestyle{fancy}
-\fancyfoot[L]{Max Powis}
-\fancyfoot[C]{Page \thepage\ of \pageref*{LastPage}}
-\fancyfoot[R]{\href{\getreleaseurl}{\getreleaseversion} - \today}
+\fancyfoot[L]{Max~Powis}
+\fancyfoot[C]{Page~\thepage~of~\pageref*{LastPage}}
+\fancyfoot[R]{\href{\getreleaseurl}{\getreleaseversion}~--~\today}
 \renewcommand{\footrulewidth}{0.4pt}% default is 0pt
 \fancyhead{}
 \renewcommand{\headrulewidth}{0pt}
@@ -54,7 +54,7 @@
   \DTMsavedate{mydate}{#1}\DTMUsedate{mydate}%
 }%
 }%
-\newcount\datediffdays
+\newcount\datediffdays%
 \newcounter{diffdays}
 \newcommand{\setdatediffdays}[2]{%
   \DTMsavedate{startdate}{#1}%
@@ -107,7 +107,7 @@
   \else
     \textsc{\displayshortmonth{#5}}
   \fi
-  & \large\sffamily \textbf{#1} at \textbf{#2}, \small{#3}\smallskip\\\textit{(\displaymonthsdiff{#4}{#5} )}
+  & \large\sffamily \textbf{#1} at \textbf{#2}, \small{#3}\smallskip\\\textit{(\displaymonthsdiff{#4}{#5})}
 }
 \DTMsavenow{now}
 \newcommand{\joblogcurrent}[4]{\joblog{#1}{#2}{#3}{#4}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}}
@@ -134,7 +134,7 @@
   \centering{
     \Huge \textsc{Max Powis}\par
     \large \textsc{Data Expert}\par
-    \small \textsc{(\displayage{1982-11-07} )}\par
+    \small \textsc{(\displayage{1982-11-07})}\par
     \textsc{Data is gold but often looks awful. I am passionate about using technology\linebreak
     to making it accessible and beautifully shaped to maximize business efficiency.}\par
   }
@@ -167,7 +167,7 @@
    for reuse across various data disciplines.\smallskip
 
   Throughout my career, I have endorsed various positions involving data governance, data architecture, data modeling (data vaulting, 
-   dimensional modeling, unified star schemas, ...), data integration, system integration. reference/master data management and business 
+   dimensional modeling, unified star schemas, \ldots), data integration, system integration, reference/master data management and business 
    analytics (reporting \& dashboarding).\medskip
 
   Interests: \sotag{data-modeling} \sotag{data-architecture} \sotag{data-integration} \sotag{data-warehouse-automation} \end{tabular}
@@ -176,17 +176,17 @@
 \begin{longtable}{r|p{0.72\textwidth}}
   \joblogcurrent{Freelance Data Expert}{maxPowX}{Brussels, BE}{2019-01-07}
     &Consultant in data architecture, data modeling, data governance, data integration, system integration, reference data, 
-     master data management and business analytics.\\\sep
+     master data management and business analytics.\\\sep%
 
   \joblog{Data Vault \& BI Expert}{dFakto}{Brussels, BE}{2012-10-01}{2019-01-04}
     &Having deep interest in data modeling and data management, I have been devoted to smoothening business processes 
      and providing governance bodies with reliable information through advanced data integration techniques.\\[4pt]
-    &Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.\\\sep
+    &Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.\\\sep%
   
   \joblog{EAI Engineer}{Accenture Technology Solutions}{Brussels, BE}{2006-11-27}{2012-09-30}
     &Integrated enterprise applications (EAI) for major companies active in the telecommunication and banking industries.\\[4pt]
     &Extensive experience with offshore application delivery centers in Bratislava and Bangalore.\\[4pt]
-    &Took part in the application design, implementation, test and delivery management of the Java technology based products.\\\sep
+    &Took part in the application design, implementation, test and delivery management of the Java technology based products.\\\sep%
   
   %\hline
   %\multicolumn{2}{r}{\footnotesize\itshape (abbreviated work history below, see LinkedIn profile for full details)}\\\sep
@@ -197,10 +197,10 @@
 \begin{longtable}{r|p{0.72\textwidth}}
   \joblog{Post-bachelor E-Design}{HoGent\footnote{Hogeschool Gent department Bedrijfskunde}}{Aalst, BE}{2005-09-01}{2006-06-30}
     &Coursework included Multimedia Authoring, e-Business, Web design \& development, CMS and more.\\[4pt]
-    &Also a great opportunity to get comfortable at speaking Dutch.\\\sep
+    &Also a great opportunity to get comfortable at speaking Dutch.\\\sep%
 
   \joblog{Bachelor of Computer Science option Management}{IESN\footnote{Haute école d’Enseignement Supérieur de Namur}}{Namur, BE}{2002-09-01}{2005-06-30}
-    &Coursework included UML, Java, C, C++, C\#, Cobol, Assembler, data modeling, project management and much more.\\\sep
+    &Coursework included UML, Java, C, C++, C\#, Cobol, Assembler, data modeling, project management and much more.\\\sep%
 
 \end{longtable}
 
@@ -214,13 +214,13 @@
     &\sotagarch{Data Mesh} \sotagtech{Collibra} \sotagtech{Google BigQuery} \sotagtech{Google Cloud Engine} \sotagtech{Google Dataplex DQ} \sotagtech{Terraform} \sotagtech{Flowable}\\[4pt]
     &Architected the 9 core Data Governance capabilities and functions supporting the Data Mesh strategy of the organisation\\[4pt]
     &Played the Data Governance product owner role, defining and orchestrating the product backlog for implementation across delivery sprints\\[4pt]
-    &Technical lead with hands-on terraform scripts and Collibra workflow implementations\\\sep
+    &Technical lead with hands-on terraform scripts and Collibra workflow implementations\\\sep%
 
   \joblogcurrent{Data Governance Expert}{German Telco}{Düsseldorf, DE}{2022-04-01}
     &\sotagtech{Collibra} \sotagtech{AB Initio MHub}\\[4pt]
     &Define the architectural vision for a transition towards a Hybrid Data Governance Platform (involving mutiple data governance technology components)\\[4pt]
     &Plan the journey towards introducing Collibra DIP as a new component of the Hybrid Data Governance Platform\\[4pt]
-    &Build the concept map within the Data Governance teams to be used as a reference for all Data Governance capability implementations\\\sep
+    &Build the concept map within the Data Governance teams to be used as a reference for all Data Governance capability implementations\\\sep%
 
   \joblog{Data Governance Manager}{Belgian Telco}{Brussels, BE}{2019-01-11}{2022-02-28}
     &\sotagtech{Collibra} \sotagtech{REST API} \sotagtech{Swagger} \sotagtech{SOAP UI}\\[4pt]
@@ -229,7 +229,7 @@
     &Drove the glossary capability implementation for the BI Community from design to delivery, including awareness 
      and training sessions for 130+ people.\\[4pt]
     &Delivered a real-time Business Capability Service integration of the glossary wihtin a BI DataSet Development 
-     Framework to support business term-driven documentation of data assets at design time.\\\sep
+     Framework to support business term-driven documentation of data assets at design time.\\\sep%
 
   %\multicolumn{2}{r}{\footnotesize\itshape (cont. on the next page)}\\\sep
   %\newpage
@@ -245,29 +245,29 @@
       \item master data management integrated with Excel for business power-users
       \item responsive dashboards with enhanced drill-down capabilities
     \end{itemize}\\
-    &The Solution served 3 use cases such as on-time delivery, supply chain issue tracking and task pointing performance.\\\sep
+    &The Solution served 3 use cases such as on-time delivery, supply chain issue tracking and task pointing performance.\\\sep%
   
   \joblog{Data Vault Architect}{Insurance C°}{Brussels, BE}{2014-11-01}{2018-03-31}
     &\sotagarch{Data Vault} \sotagarch{Star Schema} \sotagtech{SQL Server} \sotagtech{Qlik View} \sotagtech{SSIS} 
-     \sotagtech{C\# .NET} \sotagtech{SQL Agent}\\[4pt]
+     \sotagtech{C\# .NET} \sotagtech{SQL Agent}\\[4pt]% chktex 26
     &Designed, engineered and delivered a data vault and various role-based dashboards serving the needs of 120+ IT project management stakholders\\[4pt]
-    &Stakeholder roles included program managers, project managers, resource management, financial controllers, and more\\\sep
+    &Stakeholder roles included program managers, project managers, resource management, financial controllers, and more\\\sep%
 
   \joblog{Solution Architect \& Engineer}{Non-profit Organisation}{Brussels, BE}{2013-07-01}{2013-08-01}
     &\sotagtech{MS Access} \sotagtech{Qlik View} \sotagtech{Business Objects} \sotagtech{VBScript}\\[4pt]
-    &Pragmatic solution for accouting quality controls and budgeting dashboards. Blended in-house tools and smart methods.\\\sep
+    &Pragmatic solution for accouting quality controls and budgeting dashboards. Blended in-house tools and smart methods.\\\sep%
 
   \joblog{Data Vault Architect}{International Bank}{Brussels, BE}{2012-10-01}{2013-07-01}
     &\sotagtech{SQL Server} \sotagtech{SSIS} \sotagtech{T-SQL} \sotagtech{Business Objects} \sotagtech{VBA} \sotagtech{C\#} 
      \sotagtech{VBScript} \sotagtech{Control-M}\\[4pt]
-    &My first encounters with data vaulting. Fully automated and integrated in the enterpise application and security architecture\\\sep
+    &My first encounters with data vaulting. Fully automated and integrated in the enterpise application and security architecture\\\sep%
 
-  \joblog{EAI - Senior Application Designer}{International Bank}{Brussels, BE}{2011-06-15}{2012-09-30}
+  \joblog{EAI -- Senior Application Designer}{International Bank}{Brussels, BE}{2011-06-15}{2012-09-30}
     &\sotagtech{IBM WMB} \sotagtech{IBM MQ} \sotagtech{IBM WAS} \sotagtech{Oracle DB} \sotagtech{Oracle PL/SQL} 
      \sotagtech{Java} \sotagtech{Hibernate} \sotagtech{Spring} \sotagtech{Maven}\\[4pt]
     &Introduced and implemented best practices in application delivery management. Designed interface agreements,
     functional and technical documents for application components in scope of the delivery. Developed stand-alone
-    java components and supported development of WMB and WAS GUI components.\\\sep
+    java components and supported development of WMB and WAS GUI components.\\\sep%
   
   \joblog{ESB Performance Team}{Bank}{Calgary, CA}{2011-03-01}{2011-06-15}
     &\sotagtech{webMethods Integration Server} \sotagtech{webMethods Developer} \sotagtech{webMethods Insight}
@@ -275,42 +275,42 @@
      \sotagtech{CA Wily IntroScope}\\[4pt]
     &Audited and diagnosed the performance of the ESB layer interfacing the SAP systems. Fixed issues at cluster,
     OS, JVM, application, framework and component levels and pointed out abnormal response times regarding
-    exposed SAP services.\\\sep
+    exposed SAP services.\\\sep%
 
-  \joblog{EAI - Technical Architect}{Global Telco}{Strasbourg, FR}{2010-11-01}{2011-03-01}
+  \joblog{EAI -- Technical Architect}{Global Telco}{Strasbourg, FR}{2010-11-01}{2011-03-01}
     &\sotagtech{webMethods Developer} \sotagtech{SOA/P} \sotagtech{BPM/N} \sotagtech{8550} \sotagtech{PKI} \sotagtech{VBA}\\[4pt]
-    &Provided counsel in the fields of infrastructure, application frameworks and platform migrations.\\\sep
+    &Provided counsel in the fields of infrastructure, application frameworks and platform migrations.\\\sep%
 
-  \joblog{EAI - Application Designer}{Global Telco}{Brussels, BE}{2006-11-01}{2010-10-01}
+  \joblog{EAI -- Application Designer}{Global Telco}{Brussels, BE}{2006-11-01}{2010-10-01}
     &\sotagtech{webMethods Integration Server, Developer, Modeler \& Broker} \sotagtech{SOA/P} \sotagtech{BPM/N} \sotagtech{Unix} 
      \sotagtech{Oracle DB} \sotagtech{Oracle PL/SQL} \sotagtech{BEA WebLogic} \sotagtech{Java} \sotagtech{STRUTS}\\[4pt]
     &Participated in several release lifecycles including release management, functional/technical design, test
     condition and test script creation, implementation, assembly/integration tests, acceptance testing support and
     move to production. Supported the offshore development team during build phase. Managed incidents, defects
-    and maintenance releases.\\\sep
+    and maintenance releases.\\\sep%
   
-  \joblog{Intern, Developer}{Edesign}{Ophain, BE}{2005-02-01}{2005-05-01}
+  \joblog{Intern, Developer}{Edesign}{Ophain, BE}{2005-02-01}{2005-05-01}% chktex 8
     &\sotagtech{java} \sotagtech{PHP} \sotagtech{SOA}\\[4pt]
-    &Study, design and implementation of a "PermissionService" in the core company's product.\\\sep
+    &Study, design and implementation of a ``PermissionService´´ in the core company's product.\\\sep%
   
 \end{longtable}
 
 
 \section{Data \& Technology Proficiency}
 \begin{tabular}{rl}
-  \textsc{Data Modeling:}& Conceptual — ER/3NF — Data Vault — Dimensional (\faStar[regular]{} \& \faSnowflake[regular]{}) — Canonical\\
-  \textsc{RDBMS:}& SQL Server — Oracle — MariaDB/MySQL — PostgreSQL\\
-  \textsc{Documents:}& JSON — JSONSchema — YAML — XML — XSD — CSV — DTD — HTML\\
+  \textsc{Data Modeling:}& Conceptual -- ER/3NF -- Data Vault -- Dimensional (\faStar[regular]{} \& \faSnowflake[regular]{}) -- Canonical\\
+  \textsc{RDBMS:}& SQL Server -- Oracle -- MariaDB/MySQL -- PostgreSQL\\
+  \textsc{Documents:}& JSON -- JSONSchema -- YAML -- XML -- XSD -- CSV -- DTD -- HTML\\
   \textsc{DWH Automation:}& Data Vault Builder, WhereScape RED\\
-  \textsc{ETL:}& SSIS — Talend\\
-  \textsc{Data Visulisation:}& QlikSense — QlikView — Business Objects\\
-  \textsc{API:}& REST — RAML — Swagger — Postman — SOAP — SoapUI — WSDL\\
-  \textsc{IDE:}& Visual Studio — VS Code — Eclipse\\
-  \textsc{Tools:}& Jira — Confluence — GitLab\\
+  \textsc{ETL:}& SSIS -- Talend\\
+  \textsc{Data Visulisation:}& QlikSense -- QlikView -- Business Objects\\
+  \textsc{API:}& REST -- RAML -- Swagger -- Postman -- SOAP -- SoapUI -- WSDL\\
+  \textsc{IDE:}& Visual Studio -- VS Code -- Eclipse\\
+  \textsc{Tools:}& Jira -- Confluence -- GitLab\\
   \textsc{Version Control:}& Git\\
-  \textsc{O/S / Virtualization:}& Windows — Linux — vSphere — Docker\\
-  \textsc{Scripting}:&Bash — PowerShell — VBScript \\
-  \textsc{Programming}:&Python — C\# — Java\\
+  \textsc{O/S / Virtualization:}& Windows -- Linux -- vSphere -- Docker\\
+  \textsc{Scripting}:&Bash -- PowerShell -- VBScript \\
+  \textsc{Programming}:&Python -- C\# -- Java\\
 \end{tabular}
 
 \section{Languages}
@@ -323,9 +323,9 @@
 \section{Specializations}
 \begin{tabular}{rl}
   \textsc{Courses:}
-  &Collibra Expert I — Online (Credential ID: CELIC-20190131-1072)\\
-  &Certified Data Vault 2 Practioner (CDVP2) — Dan Lindstedt (\href{https://max.pow.is/assets/5_2_12900_1435331244_CDVP2_Certificate.pdf}{certificate})\\
-  &Business Information using RED on SQL Server — WhereScape
+  &Collibra Expert I -- Online (Credential ID \texttt{\scriptsize{CELIC-20190131-1072}})\\
+  &Certified Data Vault 2 Practioner (CDVP2) -- Dan Lindstedt (\href{https://max.pow.is/assets/5_2_12900_1435331244_CDVP2_Certificate.pdf}{certificate})\\
+  &Business Information using RED on SQL Server -- WhereScape
 \end{tabular}
 
 \end{document}
