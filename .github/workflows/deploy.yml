@@ -16,10 +16,10 @@ on:
 jobs:
   deploy_web:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_TYPE: latest
     steps:
-      - name: Set variables
-        env:
-          RELEASE_TYPE: latest
+      - name: Set release type from input
         run: echo "RELEASE_TYPE=${{ inputs.release_type }}" >> $GITHUB_OUTPUT
         if: ${{ inputs.release_type }}
       - name: Get the release
