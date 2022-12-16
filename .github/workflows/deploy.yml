@@ -16,12 +16,16 @@ on:
 jobs:
   deploy_web:
     runs-on: ubuntu-latest
-    env:
-      RELEASE_TYPE: latest
     steps:
-      - name: Set release type from input
-        run: echo "RELEASE_TYPE=${{ inputs.release_type }}" >> $GITHUB_OUTPUT
-        if: ${{ inputs.release_type }}
+      - name: Set release type based on originating event
+        id: get_release_type
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_RELEASE_TYPE: ${{ inputs.release_type }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then actual_release_type="$INPUT_RELEASE_TYPE"; else actual_release_type="latest"; fi
+          echo "::debug::RELEASE_TYPE=$actual_release_type"
+          echo "RELEASE_TYPE=$actual_release_type" >> $GITHUB_OUTPUT
       - name: Get the release
         uses: rez0n/actions-github-release@v1.8
         id: cv_release
