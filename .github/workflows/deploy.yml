@@ -23,8 +23,8 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           INPUT_RELEASE_TYPE: ${{ inputs.release_type }}
         run: |
-          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then actual_release_type="$INPUT_RELEASE_TYPE"; else actual_release_type="latest"; fi
-          echo "::debug::RELEASE_TYPE=$actual_release_type"
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then computed_release_type="$INPUT_RELEASE_TYPE"; else computed_release_type="latest"; fi
+          echo "::debug::RELEASE_TYPE=$computed_release_type"
           echo "RELEASE_TYPE=$actual_release_type" >> $GITHUB_OUTPUT
       - name: Get the release
         uses: rez0n/actions-github-release@v1.8
@@ -32,7 +32,7 @@ jobs:
         env:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
-          type: $RELEASE_TYPE
+          type: ${{ steps.get_release_type.outputs.RELEASE_TYPE }}
       - name: Echo release tag name
         run: echo "::debug::Found tag for ($RELEASE_TYPE) release >> ${{ steps.cv_release.outputs.release }}"
       - name: Download cv.pdf from release
