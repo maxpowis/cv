@@ -31,7 +31,7 @@ jobs:
         id: get_version
         env:
           EVENT_NAME: ${{ github.event_name }}
-          INPUT_VERSION: ${{ github.event.inputs.tags }}
+          INPUT_VERSION: ${{ inputs.tags }}
           PUSH_TAG: ${{ steps.github_ref.outputs.PUSH_TAG }}
         run: |
           if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then output="$INPUT_VERSION"; else output="$PUSH_TAG"; fi

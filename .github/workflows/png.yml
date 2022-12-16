@@ -15,7 +15,7 @@ jobs:
       - name: Set variables
         env:
           DEFAULT_RELEASE_TYPE: latest
-        run: echo "RELEASE_TYPE=env.DEFAULT_RELEASE_TYPE" >> $GITHUB_OUTPUT
+        run: echo "RELEASE_TYPE=$DEFAULT_RELEASE_TYPE" >> $GITHUB_OUTPUT
       - name: Get the release
         uses: rez0n/actions-github-release@v1.8
         id: cv_release
@@ -45,7 +45,7 @@ jobs:
           if-no-files-found: error
       - name: Publish png's to website
         uses: crykn/copy_folder_to_another_repo_action@v1.0.6
-        if: ${{ github.event.inputs.publish_flag=='true'}}
+        if: ${{ inputs.publish_flag=='true'}}
         env:
           API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN_REPO_WORKFLOW }}
         with:

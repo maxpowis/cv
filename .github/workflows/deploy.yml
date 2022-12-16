@@ -6,6 +6,7 @@ on:
       release_type:
         description: 'Release type (stable, prerelease or latest)'     
         required: true
+        type: string
         default: 'latest'
   repository_dispatch:
     types: [dispatch_publish]
@@ -20,7 +21,7 @@ jobs:
         env:
           DEFAULT_RELEASE_TYPE: latest
         run: |
-          echo "RELEASE_TYPE=${{ github.event.inputs.release_type }} || env.DEFAULT_RELEASE_TYPE" >> $GITHUB_OUTPUT
+          echo "RELEASE_TYPE=${{ inputs.release_type }} || $DEFAULT_RELEASE_TYPE" >> $GITHUB_OUTPUT
           echo "::debug::$RELEASE_TYPE"
       - name: Get the release
         uses: rez0n/actions-github-release@v1.8
