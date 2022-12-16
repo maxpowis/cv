@@ -19,10 +19,9 @@ jobs:
     steps:
       - name: Set variables
         env:
-          DEFAULT_RELEASE_TYPE: latest
-        run: |
-          echo "RELEASE_TYPE=${{ inputs.release_type }} || $DEFAULT_RELEASE_TYPE" >> $GITHUB_OUTPUT
-          echo "::debug::$RELEASE_TYPE"
+          RELEASE_TYPE: latest
+        run: echo "RELEASE_TYPE=${{ inputs.release_type }}" >> $GITHUB_OUTPUT
+        if: ${{ inputs.release_type }}
       - name: Get the release
         uses: rez0n/actions-github-release@v1.8
         id: cv_release
