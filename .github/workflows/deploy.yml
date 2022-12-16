@@ -25,7 +25,7 @@ jobs:
         run: |
           if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then computed_release_type="$INPUT_RELEASE_TYPE"; else computed_release_type="latest"; fi
           echo "::debug::RELEASE_TYPE=$computed_release_type"
-          echo "RELEASE_TYPE=$actual_release_type" >> $GITHUB_OUTPUT
+          echo "RELEASE_TYPE=$computed_release_type" >> $GITHUB_OUTPUT
       - name: Get the release
         uses: rez0n/actions-github-release@v1.8
         id: cv_release
