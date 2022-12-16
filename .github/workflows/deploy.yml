@@ -20,7 +20,8 @@ jobs:
         env:
           DEFAULT_RELEASE_TYPE: latest
         run: |
-          echo "RELEASE_TYPE=${{ github.event.inputs.release_type || env.DEFAULT_RELEASE_TYPE }}" >> $GITHUB_OUTPUT
+          echo "RELEASE_TYPE=${{ github.event.inputs.release_type }} || env.DEFAULT_RELEASE_TYPE" >> $GITHUB_OUTPUT
+          echo "::debug::$RELEASE_TYPE"
       - name: Get the release
         uses: rez0n/actions-github-release@v1.8
         id: cv_release
