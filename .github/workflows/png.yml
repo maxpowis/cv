@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       publish_flag:
-        description: 'Publish to website (true/false)'     
-        required: false
+        description: Publish to website
         type: boolean
         default: false
 

@@ -4,10 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       release_type:
-        description: 'Release type (stable, prerelease or latest)'     
+        description: Release type
+        type: choice     
         required: true
-        type: string
-        default: 'latest'
+        options: 
+        - latest
+        - stable
+        - prerelease
+        default: latest
   repository_dispatch:
     types: [dispatch_publish]
   schedule:
