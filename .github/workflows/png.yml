@@ -10,7 +10,7 @@ on:
 
 jobs:
   convert_png:
-    name: Create PNG and Upload to Website
+    name: Create & Publish PNG
     runs-on: ubuntu-latest
     steps:
       - name: Get the latest release
