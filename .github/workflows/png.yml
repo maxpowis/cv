@@ -6,25 +6,23 @@ on:
       publish_flag:
         description: 'Publish to website (true/false)'     
         required: false
-        default: 'false'
+        type: boolean
+        default: false
 
 jobs:
   convert_png:
+    name: Create PNG and Upload to Website
     runs-on: ubuntu-latest
     steps:
-      - name: Set variables
-        env:
-          DEFAULT_RELEASE_TYPE: latest
-        run: echo "RELEASE_TYPE=$DEFAULT_RELEASE_TYPE" >> $GITHUB_OUTPUT
-      - name: Get the release
+      - name: Get the latest release
         uses: rez0n/actions-github-release@v1.8
         id: cv_release
         env:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
-          type: $RELEASE_TYPE
+          type: "latest"
       - name: Echo release tag name
-        run: echo "::debug::Found tag for ($RELEASE_TYPE) release >> ${{ steps.cv_release.outputs.release }}"
+        run: echo "::debug::Found tag for latest release >> ${{ steps.cv_release.outputs.release }}"
       - name: Download cv.pdf from release
         uses: Legion2/download-release-action@v2.1.0
         with:
@@ -45,7 +43,7 @@ jobs:
           if-no-files-found: error
       - name: Publish png's to website
         uses: crykn/copy_folder_to_another_repo_action@v1.0.6
-        if: ${{ inputs.publish_flag=='true'}}
+        if: ${{ inputs.publish_flag }}
         env:
           API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN_REPO_WORKFLOW }}
         with:
