@@ -17,12 +17,12 @@ jobs:
       - name: Echo release.dat
         run: echo "::debug::Writing 'version = build-${{ github.run_id }}-${{ github.run_number }}' to release.dat"
       - name: Update release.dat
-        uses: "finnp/create-file-action@master"
+        uses: "finnp/create-file-action@1.0.0"
         env:
           FILE_NAME: "release.dat"
           FILE_DATA: "version = build-${{ github.run_id }}-${{ github.run_number }}"
       - name: LaTeX linter (chktex)
-        uses: j2kun/chktex-action@main
+        uses: j2kun/chktex-action@1.0.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Compile LaTeX document
