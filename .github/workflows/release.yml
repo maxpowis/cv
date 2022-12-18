@@ -25,18 +25,17 @@ jobs:
         run: |
           echo "::debug::GITHUB_REF=${GITHUB_REF}"
           echo "PUSH_TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
-          echo "::debug::PUSH_TAG=$PUSH_TAG"
       - name: Set release name based on originating event
         id: get_version
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          INPUT_VERSION: ${{ inputs.tags }}
-          PUSH_TAG: ${{ steps.github_ref.outputs.PUSH_TAG }}
         run: |
-          echo "::debug::INPUT_VERSION=$INPUT_VERSION"
-          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then computed_version="$INPUT_VERSION"; else computed_version="$PUSH_TAG"; fi
+          echo "::debug::PUSH_TAG=${{steps.github_ref.outputs.PUSH_TAG}}"
+          echo "::debug::INPUT_VERSION=${{inputs.tags}}"
+          if [[ "${{github.event_name}}" == "workflow_dispatch" ]]; 
+            then computed_version="${{inputs.tags}}"; 
+            else computed_version="${{steps.github_ref.outputs.PUSH_TAG}}"; 
+          fi
           echo "VERSION=$computed_version" >> $GITHUB_OUTPUT
-          echo "::debug::Version evaluated to $VERSION"
+          echo "::debug::Version evaluated to $computed_version"
   release:
     name: Create Release for Version
     needs: version
