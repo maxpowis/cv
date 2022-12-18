@@ -46,6 +46,8 @@ sudo apt install git texlive texlive-luatex texlive-fonts-extra
 
 ### Building
 
+Touch a ´release.dat´ file locally to support embedding versioning of pdf file generation.
+
 Building is just a matter of clicking the build button in VSCode in the VSCode setup.
 
 Note the github project comes with some nice github actions:
