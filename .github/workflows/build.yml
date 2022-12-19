@@ -21,10 +21,23 @@ jobs:
         env:
           FILE_NAME: "release.dat"
           FILE_DATA: "version = build-${{ github.run_id }}-${{ github.run_number }}"
-      - name: LaTeX linter (chktex)
-        uses: j2kun/chktex-action@1.0.3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - name: LaTeX linter (chktex)
+#        uses: j2kun/chktex-action@1.0.3
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Lint LaTeX document
+        uses: ChiefGokhlayeh/textidote-action@v5.1.0
+        id: lint
+        with:
+            root_file: cv.tex
+      - name: Upload TeXtidote report
+        uses: actions/upload-artifact@v3
+        with:
+            name: textidote_report
+            path: report.html
+      - name: Throw error if linter warnings exist
+        if: ${{ steps.lint.outputs.num_warnings != 0 }}
+        run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}"; exit 1;'
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
