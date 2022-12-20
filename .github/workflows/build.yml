@@ -35,9 +35,9 @@ jobs:
         with:
             name: textidote_report
             path: report.html
-      - name: Throw error if linter warnings exist
-        if: ${{ steps.lint.outputs.num_warnings != 0 }}
-        run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}"; exit 1;'
+#      - name: Throw error if linter warnings exist
+#        if: ${{ steps.lint.outputs.num_warnings != 0 }}
+#        run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}"; exit 1;'
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
