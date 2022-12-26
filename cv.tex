@@ -100,21 +100,28 @@
     \ifnum\value{diffmonths}>0, \fi
   \fi
 }
-\newcommand{\joblog}[5]{
-  \textsc{\displayshortmonth{#4}}%
-  \setdatediffdays{#5}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}%
-  \,\faLongArrowAltRight{}
-  \ifnum\value{diffdays}=0
-    \textbf{\textit{Present}}
-  \else
-    \textsc{\displayshortmonth{#5}}
-  \fi
-  & \large\sffamily \textbf{#1} at \textbf{#2}, \small{#3}\smallskip\\\textit{(\displaymonthsdiff{#4}{#5})}
+\usepackage{makecell}
+\newcommand{\joblog}[6]{
+  \makecell[tr]{%
+    \textsc{\displayshortmonth{#4}}%
+    \setdatediffdays{#5}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}%
+    \,\faLongArrowAltRight{}%
+    \ifnum\value{diffdays}=0%
+      \textbf{\textit{Present}}%
+    \else%
+      \textsc{\displayshortmonth{#5}}%
+    \fi\smallskip\\%
+    \textit{(\displaymonthsdiff{#4}{#5})}%
+  }%
+  &\makecell[t{{p{13.2cm}}}]{%
+    \large\sffamily \textbf{#1} at \textbf{#2}, \small{#3}\smallskip\\%
+    #6%
+  }\\\multicolumn{2}{c}{}\\
 }
+
 \DTMsavenow{now}
-\newcommand{\joblogcurrent}[4]{\joblog{#1}{#2}{#3}{#4}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}}
+\newcommand{\joblogcurrent}[5]{\joblog{#1}{#2}{#3}{#4}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}}{#5}}
 \newcommand{\displayage}[1]{\displayyearsdiff{#1}{\DTMfetchyear{now}-\DTMfetchmonth{now}-\DTMfetchday{now}} old}
-\newcommand{\sep}{\multicolumn{2}{c}{}\\}
 
 % tweak the url colors
 \usepackage{hyperref}
@@ -174,62 +181,67 @@
 \end{tabular}
 
 \section{Companies I have worked for}
-\begin{longtable}{r|p{0.72\textwidth}}
-  \joblogcurrent{Freelance Data Expert}{maxPowX}{Brussels, BE}{2019-01-07}
-    &Consultant in data architecture, data modeling, data governance, data integration, system integration, reference data, 
-     master data management and business analytics.\\\sep%
+\begin{longtable}{p{3.5cm}|p{13.5cm}}
+  \joblogcurrent{Freelance Data Expert}{maxPowX}{Brussels, BE}{2019-01-07}{%
+    Consultant in data architecture, data modeling, data governance, data integration, system integration, reference data,%
+    master data management and business analytics.%
+  }
 
-  \joblog{Data Vault \& BI Expert}{dFakto}{Brussels, BE}{2012-10-01}{2019-01-04}
-    &Having deep interest in data modeling and data management, I have been devoted to smoothening business processes 
-     and providing governance bodies with reliable information through advanced data integration techniques.\\[4pt]
-    &Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.\\\sep%
+  \joblog{Data Vault \& BI Expert}{dFakto}{Brussels, BE}{2012-10-01}{2019-01-04}{%
+    Having deep interest in data modeling and data management, I have been devoted to smoothening business processes %
+     and providing governance bodies with reliable information through advanced data integration techniques.\\
+    Drove the organization towards more agile delivery through methodology mashups fit for consulting firms.%
+  }
   
-  \joblog{EAI Engineer}{Accenture Technology Solutions}{Brussels, BE}{2006-11-27}{2012-09-30}
-    &Integrated enterprise applications (EAI) for major companies active in the telecommunication and banking industries.\\[4pt]
-    &Extensive experience with offshore application delivery centers in Bratislava and Bangalore.\\[4pt]
-    &Took part in the application design, implementation, test and delivery management of the Java technology based products.\\\sep%
+  \joblog{EAI Engineer}{Accenture Technology Solutions}{Brussels, BE}{2006-11-27}{2012-09-30}{
+    Integrated enterprise applications (EAI) for major companies active in the telecommunication and banking industries.\\
+    Extensive experience with offshore application delivery centers in Bratislava and Bangalore.\\
+    Took part in the application design, implementation, test and delivery management of the Java technology based products.%
+  }
 \end{longtable}
 
 \section{Benches I have scratched}
-\begin{longtable}{r|p{0.72\textwidth}}
-  \joblog{Post-bachelor E-Design}{HoGent\footnote{Hogeschool Gent department Bedrijfskunde}}{Aalst, BE}{2005-09-01}{2006-06-30}
-    &Coursework included Multimedia Authoring, e-Business, Web design \& development, CMS and more.\\[4pt]
-    &Also a great opportunity to get comfortable at speaking Dutch.\\\sep%
+\begin{longtable}{p{3.5cm}|p{13.5cm}}
+  \joblog{Post-bachelor E-Design}{HoGent}{Aalst, BE}{2005-09-01}{2006-06-30}{%
+    Coursework included Multimedia Authoring, e-Business, Web design \& development, CMS and more.\\%
+    Also a great opportunity to get comfortable at speaking Dutch.%
+  }
 
-  \joblog{Bachelor of Computer Science option Management}{IESN\footnote{Haute école d’Enseignement Supérieur de Namur}}{Namur, BE}{2002-09-01}{2005-06-30}
-    &Coursework included UML, Java, C, C++, C\#, Cobol, Assembler, data modeling, project management and much more.\\\sep%
+  \joblog{Bachelor of Computer Science option Management}{IESN}{Namur, BE}{2002-09-01}{2005-06-30}{%
+    Coursework included UML, Java, C, C++, C\#, Cobol, Assembler, data modeling, project management and much more.%
+  }
 \end{longtable}
 
 \newpage
 
 \section{Missions I have carried out}
-\begin{longtable}{r|p{0.72\textwidth}}
+\begin{longtable}{p{3.5cm}|p{13.5cm}}
+  \joblogcurrent{Data Governance Lead Architect}{Portuguese Telco}{Lisbon, PT}{2022-05-01}{%
+    \sotagarch{Data Mesh} \sotagtech{Collibra} \sotagtech{Google BigQuery} \sotagtech{Google Cloud Engine} \sotagtech{Google Dataplex DQ} \sotagtech{Terraform} \sotagtech{Flowable}\\%
+    Architected the 9 core Data Governance capabilities and functions supporting the Data Mesh strategy of the organisation\\%
+    Played the Data Governance product owner role, defining and orchestrating the product backlog for implementation across delivery sprints\\%
+    Technical lead with hands-on terraform scripts and Collibra workflow implementations%
+  }
 
-  \joblogcurrent{Data Governance Lead Architect}{Portuguese Telco}{Lisbon, PT}{2022-05-01}
-    &\sotagarch{Data Mesh} \sotagtech{Collibra} \sotagtech{Google BigQuery} \sotagtech{Google Cloud Engine} \sotagtech{Google Dataplex DQ} \sotagtech{Terraform} \sotagtech{Flowable}\\[4pt]
-    &Architected the 9 core Data Governance capabilities and functions supporting the Data Mesh strategy of the organisation\\[4pt]
-    &Played the Data Governance product owner role, defining and orchestrating the product backlog for implementation across delivery sprints\\[4pt]
-    &Technical lead with hands-on terraform scripts and Collibra workflow implementations\\\sep%
+  \joblogcurrent{Data Governance Expert}{German Telco}{Düsseldorf, DE}{2022-04-01}{%
+    \sotagtech{Collibra} \sotagtech{AB Initio MHub}\\%
+    Define the architectural vision for a transition towards a Hybrid Data Governance Platform (involving mutiple data governance technology components)\\%
+    Plan the journey towards introducing Collibra DIP as a new component of the Hybrid Data Governance Platform\\%
+    Build the concept map within the Data Governance teams to be used as a reference for all Data Governance capability implementations%
+  }
 
-  \joblogcurrent{Data Governance Expert}{German Telco}{Düsseldorf, DE}{2022-04-01}
-    &\sotagtech{Collibra} \sotagtech{AB Initio MHub}\\[4pt]
-    &Define the architectural vision for a transition towards a Hybrid Data Governance Platform (involving mutiple data governance technology components)\\[4pt]
-    &Plan the journey towards introducing Collibra DIP as a new component of the Hybrid Data Governance Platform\\[4pt]
-    &Build the concept map within the Data Governance teams to be used as a reference for all Data Governance capability implementations\\\sep%
+  \joblog{Data Governance Manager}{Belgian Telco}{Brussels, BE}{2019-01-11}{2022-02-28}{%
+    \sotagtech{Collibra} \sotagtech{REST API} \sotagtech{Swagger} \sotagtech{SOAP UI}\\
+    Responsible to define the Data Model governance capability functions and implementation guidelines towards a new, better way of working.\\
+    Drove the glossary capability implementation for the BI Community from design to delivery, including awareness and training sessions for 130+ people.\\
+    Delivered a real-time Business Capability Service integration of the glossary wihtin a BI DataSet Development %
+     Framework to support business term-driven documentation of data assets at design time.%
+  }
 
-  \joblog{Data Governance Manager}{Belgian Telco}{Brussels, BE}{2019-01-11}{2022-02-28}
-    &\sotagtech{Collibra} \sotagtech{REST API} \sotagtech{Swagger} \sotagtech{SOAP UI}\\[4pt]
-    &Responsible to define the Data Model governance capability functions and implementation guidelines towards a 
-     new, better way of working.\\[4pt]
-    &Drove the glossary capability implementation for the BI Community from design to delivery, including awareness 
-     and training sessions for 130+ people.\\[4pt]
-    &Delivered a real-time Business Capability Service integration of the glossary wihtin a BI DataSet Development 
-     Framework to support business term-driven documentation of data assets at design time.\\\sep%
-
-  \joblog{Data Vault Architect}{Aerospace Manufacturing C°}{Brussels, BE}{2018-03-01}{2019-01-31}
-    &\sotagarch{Data Vault} \sotagarch{Star Schema} \sotagtech{SQL Server} \sotagtech{(SQL Server) Master Data Services} 
-     \sotagtech{Docker} \sotagtech{Datavault Builder} \sotagtech{QlikSense} \sotagtech{PowerShell} \sotagtech{SAP HighSEA}\\[4pt]
-    &Designed, engineered and delivered a full automated agile data management platform in 4 months. The platform included:
+  \joblog{Data Vault Architect}{Aerospace Manufacturing C°}{Brussels, BE}{2018-03-01}{2019-01-31}{%
+    \sotagarch{Data Vault} \sotagarch{Star Schema} \sotagtech{SQL Server} \sotagtech{(SQL Server) Master Data Services} 
+     \sotagtech{Docker} \sotagtech{Datavault Builder} \sotagtech{QlikSense} \sotagtech{PowerShell} \sotagtech{SAP HighSEA}\\
+    Designed, engineered and delivered a full automated agile data management platform in 4 months. The platform included:
     \begin{itemize}
       \item connectors to 3 source systems + the master data repository
       \item data integration and historisation across 80+ business concepts of the data vault
@@ -237,57 +249,67 @@
       \item master data management integrated with Excel for business power-users
       \item responsive dashboards with enhanced drill-down capabilities
     \end{itemize}\\
-    &The Solution served 3 use cases such as on-time delivery, supply chain issue tracking and task pointing performance.\\\sep%
+    The Solution served 3 use cases such as on-time delivery, supply chain issue tracking and task pointing performance.%
+  }
   
-  \joblog{Data Vault Architect}{Insurance C°}{Brussels, BE}{2014-11-01}{2018-03-31}
-    &\sotagarch{Data Vault} \sotagarch{Star Schema} \sotagtech{SQL Server} \sotagtech{Qlik View} \sotagtech{SSIS} 
-     \sotagtech{C\#\,\symbol{46}NET} \sotagtech{SQL Agent}\\[4pt]% chktex 26
-    &Designed, engineered and delivered a data vault and various role-based dashboards serving the needs of 120+ IT project management stakholders\\[4pt]
-    &Stakeholder roles included program managers, project managers, resource management, financial controllers, and more\\\sep%
+  \joblog{Data Vault Architect}{Insurance C°}{Brussels, BE}{2014-11-01}{2018-03-31}{%
+    \sotagarch{Data Vault} \sotagarch{Star Schema} \sotagtech{SQL Server} \sotagtech{Qlik View} \sotagtech{SSIS} 
+     \sotagtech{C\#\,\symbol{46}NET} \sotagtech{SQL Agent}\\
+    Designed, engineered and delivered a data vault and various role-based dashboards serving the needs of 120+ IT project management stakholders\\
+    Stakeholder roles included program managers, project managers, resource management, financial controllers, and more%
+  }
 
-  \joblog{Solution Architect \& Engineer}{Non-profit Organisation}{Brussels, BE}{2013-07-01}{2013-08-01}
-    &\sotagtech{MS Access} \sotagtech{Qlik View} \sotagtech{Business Objects} \sotagtech{VBScript}\\[4pt]
-    &Pragmatic solution for accouting quality controls and budgeting dashboards. Blended in-house tools and smart methods.\\\sep%
+  \joblog{Solution Architect \& Engineer}{Non-profit Organisation}{Brussels, BE}{2013-07-01}{2013-08-01}{%
+    \sotagtech{MS Access} \sotagtech{Qlik View} \sotagtech{Business Objects} \sotagtech{VBScript}\\
+    Pragmatic solution for accouting quality controls and budgeting dashboards. Blended in-house tools and smart methods.%
+  }
 
-  \joblog{Data Vault Architect}{International Bank}{Brussels, BE}{2012-10-01}{2013-07-01}
-    &\sotagtech{SQL Server} \sotagtech{SSIS} \sotagtech{T-SQL} \sotagtech{Business Objects} \sotagtech{VBA} \sotagtech{C\#} 
-     \sotagtech{VBScript} \sotagtech{Control-M}\\[4pt]
-    &My first encounters with data vaulting. Fully automated and integrated in the enterpise application and security architecture\\\sep%
+  \joblog{Data Vault Architect}{International Bank}{Brussels, BE}{2012-10-01}{2013-07-01}{%
+    \sotagtech{SQL Server} \sotagtech{SSIS} \sotagtech{T-SQL} \sotagtech{Business Objects} \sotagtech{VBA} \sotagtech{C\#} 
+     \sotagtech{VBScript} \sotagtech{Control-M}\\
+    My first encounters with data vaulting. Fully automated and integrated in the enterpise application and security architecture%
+  }
 
-  \joblog{EAI -- Senior Application Designer}{International Bank}{Brussels, BE}{2011-06-15}{2012-09-30}
-    &\sotagtech{IBM WMB} \sotagtech{IBM MQ} \sotagtech{IBM WAS} \sotagtech{Oracle DB} \sotagtech{Oracle PL/SQL} 
-     \sotagtech{Java} \sotagtech{Hibernate} \sotagtech{Spring} \sotagtech{Maven}\\[4pt]
-    &Introduced and implemented best practices in application delivery management. Designed interface agreements,
-    functional and technical documents for application components in scope of the delivery. Developed stand-alone
-    java components and supported development of WMB and WAS GUI components.\\\sep%
+  \joblog{EAI -- Senior Application Designer}{International Bank}{Brussels, BE}{2011-06-15}{2012-09-30}{%
+    \sotagtech{IBM WMB} \sotagtech{IBM MQ} \sotagtech{IBM WAS} \sotagtech{Oracle DB} \sotagtech{Oracle PL/SQL} 
+     \sotagtech{Java} \sotagtech{Hibernate} \sotagtech{Spring} \sotagtech{Maven}\\
+    Introduced and implemented best practices in application delivery management. Designed interface agreements,%
+    functional and technical documents for application components in scope of the delivery. Developed stand-alone%
+    java components and supported development of WMB and WAS GUI components.%
+  }
   
-  \joblog{ESB Performance Team}{Bank}{Calgary, CA}{2011-03-01}{2011-06-15}
-    &\sotagtech{webMethods Integration Server} \sotagtech{webMethods Developer} \sotagtech{webMethods Insight}
+  \joblog{ESB Performance Team}{Bank}{Calgary, CA}{2011-03-01}{2011-06-15}{%
+    \sotagtech{webMethods Integration Server} \sotagtech{wM Developer} \sotagtech{wM Insight}
      \sotagtech{Java} \sotagtech{JMS} \sotagtech{IBM DB2} \sotagtech{IBM AIX HA Clusters} \sotagtech{F5} 
-     \sotagtech{CA Wily IntroScope}\\[4pt]
-    &Audited and diagnosed the performance of the ESB layer interfacing the SAP systems. Fixed issues at cluster,
-    OS, JVM, application, framework and component levels and pointed out abnormal response times regarding
-    exposed SAP services.\\\sep%
+     \sotagtech{CA Wily IntroScope}\\
+    Audited and diagnosed the performance of the ESB layer interfacing the SAP systems. Fixed issues at cluster,%
+    OS, JVM, application, framework and component levels and pointed out abnormal response times regarding%
+    exposed SAP services.%
+  }
 
-  \joblog{EAI -- Technical Architect}{Global Telco}{Strasbourg, FR}{2010-11-01}{2011-03-01}
-    &\sotagtech{webMethods Developer} \sotagtech{SOA/P} \sotagtech{BPM/N} \sotagtech{8550} \sotagtech{PKI} \sotagtech{VBA}\\[4pt]
-    &Provided counsel in the fields of infrastructure, application frameworks and platform migrations.\\\sep%
+  \joblog{EAI -- Technical Architect}{Global Telco}{Strasbourg, FR}{2010-11-01}{2011-03-01}{%
+    \sotagtech{webMethods Developer} \sotagtech{SOA/P} \sotagtech{BPM/N} \sotagtech{8550} \sotagtech{PKI} \sotagtech{VBA}\\%
+    Provided counsel in the fields of infrastructure, application frameworks and platform migrations.%
+  }
 
-  \joblog{EAI -- Application Designer}{Global Telco}{Brussels, BE}{2006-11-01}{2010-10-01}
-    &\sotagtech{webMethods Integration Server, Developer, Modeler \& Broker} \sotagtech{SOA/P} \sotagtech{BPM/N} \sotagtech{Unix} 
-     \sotagtech{Oracle DB} \sotagtech{Oracle PL/SQL} \sotagtech{BEA WebLogic} \sotagtech{Java} \sotagtech{STRUTS}\\[4pt]
-    &Participated in several release lifecycles including release management, functional/technical design, test
-    condition and test script creation, implementation, assembly/integration tests, acceptance testing support and
-    move to production. Supported the offshore development team during build phase. Managed incidents, defects
-    and maintenance releases.\\\sep%
+  \joblog{EAI -- Application Designer}{Global Telco}{Brussels, BE}{2006-11-01}{2010-10-01}{%
+    \sotagtech{webMethods Integration Server, Developer, Modeler \& Broker} \sotagtech{SOA/P} \sotagtech{BPM/N} \sotagtech{Unix} %
+     \sotagtech{Oracle DB} \sotagtech{Oracle PL/SQL} \sotagtech{BEA WebLogic} \sotagtech{Java} \sotagtech{STRUTS}\\%
+    Participated in several release lifecycles including release management, functional/technical design, test%
+    condition and test script creation, implementation, assembly/integration tests, acceptance testing support and%
+    move to production. Supported the offshore development team during build phase. Managed incidents, defects%
+    and maintenance releases.%
+  }
   
-  \joblog{Intern, Developer}{Edesign}{Ophain, BE}{2005-02-01}{2005-05-01}% chktex 8
-    &\sotagtech{Java} \sotagtech{PHP} \sotagtech{SOA}\\[4pt]
-    &Study, design and implementation of a \enquote{PermissionService} in the core company's product.\\\sep%
+  \joblog{Intern, Developer}{Edesign}{Ophain, BE}{2005-02-01}{2005-05-01}{%
+    \sotagtech{Java} \sotagtech{PHP} \sotagtech{SOA}\\%
+    Study, design and implementation of a \enquote{PermissionService} in the core company's product.%
+  }
+
 \end{longtable}
 
 \section{Data \& Technology Proficiency}
-\begin{tabular}{rl}
+\begin{tabular}{r|l}
   \textsc{Data Modeling:}& Conceptual -- ER/3NF -- Data Vault -- Dimensional (\faStar[regular]{} \& \faSnowflake[regular]{}) -- Canonical\\
   \textsc{RDBMS:}& SQL Server -- Oracle -- MariaDB/MySQL -- PostgreSQL\\
   \textsc{Documents:}& JSON -- JSONSchema -- YAML -- XML -- XSD -- CSV -- DTD -- HTML\\
