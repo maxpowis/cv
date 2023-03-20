@@ -46,7 +46,7 @@ jobs:
       - name: Echo release.dat
         run: echo "::debug::Writing 'version = ${{ needs.version.outputs.version }}' to release.dat"
       - name: Update release.dat
-        uses: "finnp/create-file-action@1.0.0"
+        uses: "finnp/create-file-action@2.0.0"
         env:
           FILE_NAME: "release.dat"
           FILE_DATA: "version = ${{ needs.version.outputs.version }}"
