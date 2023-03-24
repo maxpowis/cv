@@ -36,13 +36,15 @@ A package is also available for Windows but I prefer using a **WSL2** which is p
 
 ### Setting up Dev
 
-*On debian*, the following packages must be installed
-
-```shell
-sudo apt install git texlive texlive-luatex texlive-fonts-extra
-```
-
-*On windows*, setup the debian instance as described above then open the cloned project in the WSL2 context
+* *On debian*, the following packages must be installed
+    ```shell
+    sudo apt install git texlive texlive-luatex texlive-fonts-extra
+    ```
+* *On windows*, setup the debian instance as described above then open the cloned project in the WSL2 context
+* *On MacOS*, the following packages must be installed
+    ```shell
+    brew install texlive
+    ```
 
 ### Building
 
