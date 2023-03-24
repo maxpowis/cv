@@ -24,7 +24,8 @@
 \pagestyle{fancy}
 \fancyfoot[L]{Max~Powis}
 \fancyfoot[C]{Page~\thepage~of~\pageref*{LastPage}}
-\fancyfoot[R]{\href{\getreleaseurl}{\getreleaseversion}~--~\today}
+\newcommand{\hrefNew}[1]{\href[pdfnewwindow=true]{#1}}
+\fancyfoot[R]{\hrefNew{\getreleaseurl}{\getreleaseversion}~--~\today}
 \renewcommand{\footrulewidth}{0.4pt}% default is 0pt
 \fancyhead{}
 \renewcommand{\headrulewidth}{0pt}
@@ -164,11 +165,11 @@
   & \textsc{Website} 
   & \textsc{Socials}\\
   \faEnvelope[regular]{} \href{mailto:max@maxpowx.com}{max@maxpowx.com}
-  & \faGlobe{} \href{https://max.pow.is}{max.pow.is} 
-  & \faLinkedin{} \href{https://www.linkedin.com/in/maxpowis/}{linkedin}\\
+  & \faGlobe{} \hrefNew{https://max.pow.is}{max.pow.is} 
+  & \faLinkedin{} \hrefNew{https://www.linkedin.com/in/maxpowis/}{linkedin}\\
   \faMobile*{} \href{tel:0032499673767}{+32 499 67 37 67} 
-  & \faGlobe{} \href{https://www.maxpowx.com}{maxpowx.com}
-  & \faGithub{} \href{https://github.com/maxpowis}{github} \faTwitter{} \href{https://twitter.com/maxpowis}{twitter}
+  & \faGlobe{} \hrefNew{https://www.maxpowx.com}{maxpowx.com}
+  & \faGithub{} \hrefNew{https://github.com/maxpowis}{github} \faTwitter{} \hrefNew{https://twitter.com/maxpowis}{twitter}
 \end{tabular}
 \end{center}
 
@@ -344,7 +345,7 @@
 \begin{tabular}{rl}
   \textsc{Courses:}
   &Collibra Expert I -- Online (Credential ID \texttt{\scriptsize{CELIC-20190131-1072}})\\
-  &Certified Data Vault 2 Practioner (CDVP2) -- Dan Lindstedt (\href{https://max.pow.is/assets/5_2_12900_1435331244_CDVP2_Certificate.pdf}{certificate})\\
+  &Certified Data Vault 2 Practioner (CDVP2) -- Dan Lindstedt (\hrefNew{https://max.pow.is/assets/5_2_12900_1435331244_CDVP2_Certificate.pdf}{certificate})\\
   &Business Information using RED on SQL Server -- WhereScape
 \end{tabular}
 
