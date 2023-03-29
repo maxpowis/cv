@@ -19,9 +19,9 @@ Peronal add-ons:
 
 ## Preview
 
-Page 1 | Page 2 | Page 3
-:--------------:|:---------------:|:---------------:
-![cv1](https://max.pow.is/assets/img/cv/cv-00.png)| ![cv2](https://max.pow.is/assets/img/cv/cv-01.png)| ![cv3](https://max.pow.is/assets/img/cv/cv-02.png)
+Page 1 | Page 2 | Page 3 | Page 4
+:--------------:|:---------------:|:---------------:|:---------------:
+![cv1](https://max.pow.is/assets/img/cv/cv-00.png)| ![cv2](https://max.pow.is/assets/img/cv/cv-01.png)| ![cv3](https://max.pow.is/assets/img/cv/cv-02.png)| ![cv4](https://max.pow.is/assets/img/cv/cv-03.png)
 
 ## Developing
 
