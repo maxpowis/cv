@@ -31,7 +31,7 @@ jobs:
           echo "::debug::RELEASE_TYPE=$computed_release_type"
           echo "RELEASE_TYPE=$computed_release_type" >> $GITHUB_OUTPUT
       - name: Get the release
-        uses: rez0n/actions-github-release@v1.8
+        uses: rez0n/actions-github-release@v2.0
         id: cv_release
         env:
           token: ${{ secrets.GITHUB_TOKEN }}
