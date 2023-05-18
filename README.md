@@ -52,6 +52,15 @@ Touch a ´release.dat´ file locally to support embedding versioning of pdf file
 
 Building is just a matter of clicking the build button in VSCode in the VSCode setup.
 
+Altrernatively, the pdf can be generated using the command-line:
+
+```shell
+# Generate the standard pdf
+pdflatex cv
+# Generate the pdf in dar mode
+pdflatex "\def\darkmode{}\input{cv}"
+```
+
 Note the github project comes with some nice github actions:
 * [![Build (Lualatex)](https://github.com/maxpowis/cv/actions/workflows/build.yml/badge.svg)](https://github.com/maxpowis/cv/actions/workflows/build.yml): builds the cv.tex project with lualatex
 * [![Create Release](https://github.com/maxpowis/cv/actions/workflows/release.yml/badge.svg)](https://github.com/maxpowis/cv/actions/workflows/release.yml): build and release to the repo releases
