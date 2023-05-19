@@ -57,7 +57,7 @@ Altrernatively, the pdf can be generated using the command-line:
 ```shell
 # Generate the standard pdf
 pdflatex cv
-# Generate the pdf in dar mode
+# Generate the pdf in dark mode
 pdflatex "\def\darkmode{}\input{cv}"
 ```
 
