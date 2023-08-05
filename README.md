@@ -1,3 +1,5 @@
+# Max Powis's CV as DocOps
+
 ![repo size](https://img.shields.io/github/repo-size/maxpowis/cv)
 ![license](https://img.shields.io/github/license/maxpowis/cv)
 ![last commit](https://img.shields.io/github/last-commit/maxpowis/cv)
@@ -26,6 +28,7 @@ Page 1 | Page 2 | Page 3 | Page 4
 ## Developing
 
 ### Built With
+
 Build with lualatex due to some known issues with FontAwesome.
 
 ### Prerequisites
@@ -37,11 +40,14 @@ A package is also available for Windows but I prefer using a **WSL2** which is p
 ### Setting up Dev
 
 * *On debian*, the following packages must be installed
+
     ```shell
     sudo apt install git texlive texlive-luatex texlive-fonts-extra
     ```
+
 * *On windows*, setup the debian instance as described above then open the cloned project in the WSL2 context
 * *On MacOS*, the following packages must be installed
+
     ```shell
     brew install texlive
     ```
@@ -62,6 +68,7 @@ pdflatex "\def\darkmode{}\input{cv}"
 ```
 
 Note the github project comes with some nice github actions:
+
 * [![Build (Lualatex)](https://github.com/maxpowis/cv/actions/workflows/build.yml/badge.svg)](https://github.com/maxpowis/cv/actions/workflows/build.yml): builds the cv.tex project with lualatex
 * [![Create Release](https://github.com/maxpowis/cv/actions/workflows/release.yml/badge.svg)](https://github.com/maxpowis/cv/actions/workflows/release.yml): build and release to the repo releases
 * [![Publish PDF release to website](https://github.com/maxpowis/cv/actions/workflows/deploy.yml/badge.svg)](https://github.com/maxpowis/cv/actions/workflows/deploy.yml): copies the latest pdf release to a github pages site repo
