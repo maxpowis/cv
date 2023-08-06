@@ -53,17 +53,17 @@ jobs:
           generate_release_notes: true
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Echo cv-maxpowis.tex
-        run: echo "::debug::Writing '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{${{ steps.create_release.outputs.url }}}\input{cv}' to cv-maxpowis.tex"
-      - name: Create cv-maxpowis.tex
+      - name: Echo cv-maxpowis-{version}.tex
+        run: echo "::debug::Writing '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{${{ steps.create_release.outputs.url }}}\input{cv}' to cv-maxpowis-${{ needs.version.outputs.version }}.tex"
+      - name: Create cv-maxpowis-{version}.tex
         uses: "finnp/create-file-action@2.0.0"
         env:
-          FILE_NAME: "cv-maxpowis.tex"
+          FILE_NAME: "cv-maxpowis-${{ needs.version.outputs.version }}.tex"
           FILE_DATA: '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{${{ steps.create_release.outputs.url }}}\input{cv}'
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: cv-maxpowis.tex
+          root_file: cv-maxpowis-${{ needs.version.outputs.version }}.tex
           latexmk_use_lualatex: true
       - name: Upload assets to release
         id: update_release
@@ -73,7 +73,7 @@ jobs:
           name: Release ${{ needs.version.outputs.version }}
           draft: false
           files:  |
-            cv-maxpowis.pdf
+            cv-maxpowis-${{ needs.version.outputs.version }}.pdf
       - name: Trigger workflow 'Publish PDF release to website'
         uses: peter-evans/repository-dispatch@v2.1.1
         if: ${{ github.event_name=='push' }}
