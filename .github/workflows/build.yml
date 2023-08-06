@@ -14,13 +14,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Echo release.dat
-        run: echo "::debug::Writing 'version = build-${{ github.run_id }}-${{ github.run_number }}' to release.dat"
-      - name: Update release.dat
+      - name: Echo cv-maxpowis-ga-build.tex
+        run: echo "::debug::Writing '\def\releasenumber{ga-build}\input{cv}' to cv-maxpowis-ga-build.tex"
+      - name: Create cv-maxpowis-ga-build.tex
         uses: "finnp/create-file-action@2.0.0"
         env:
-          FILE_NAME: "release.dat"
-          FILE_DATA: "version = build-${{ github.run_id }}-${{ github.run_number }}"
+          FILE_NAME: "cv-maxpowis-ga-build.tex"
+          FILE_DATA: '\def\releasenumber{ga-build}\input{cv}'
 #      - name: LaTeX linter (chktex)
 #        uses: j2kun/chktex-action@1.0.3
 #        env:
@@ -29,7 +29,7 @@ jobs:
         uses: ChiefGokhlayeh/textidote-action@v5.3.1
         id: lint
         with:
-            root_file: cv.tex
+            root_file: cv-maxpowis-ga-build.tex
       - name: Upload TeXtidote report
         uses: actions/upload-artifact@v3
         with:
@@ -41,15 +41,15 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: cv.tex
+          root_file: cv-maxpowis-ga-build.tex
           latexmk_use_lualatex: true
       - name: Upload pdf
         uses: actions/upload-artifact@v3
         with:
-          path: cv.pdf
+          path: cv-maxpowis-ga-build.pdf
           if-no-files-found: error
       - name: Upload logs
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          path: cv.log
+          path: cv-maxpowis-ga-build.log
