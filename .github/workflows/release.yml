@@ -51,10 +51,12 @@ jobs:
           draft: true
           prerelease: true
           generate_release_notes: true
+      - name: Echo release info
+        run: echo "::debug::Writing url=${{ steps.create_release.outputs.url }}; id=${{ steps.create_release.outputs.id }}; upload_url=${{ steps.create_release.outputs.upload_url }}"
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Echo cv-maxpowis-{version}.tex
-        run: echo "::debug::Writing '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{${{ steps.create_release.outputs.url }}}\input{cv}' to cv-maxpowis-${{ needs.version.outputs.version }}.tex"
+        run: echo "::debug::Writing '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{https://github.com/maxpowis/cv/releases/tag/${{ needs.version.outputs.version }}}\input{cv}' to cv-maxpowis-${{ needs.version.outputs.version }}.tex"
       - name: Create cv-maxpowis-{version}.tex
         uses: "finnp/create-file-action@2.0.0"
         env:
