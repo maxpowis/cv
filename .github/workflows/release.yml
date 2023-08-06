@@ -41,18 +41,6 @@ jobs:
     needs: version
     runs-on: ubuntu-latest
     steps:
-      - name: Create draft release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: ${{ needs.version.outputs.version }}
-          name: Release ${{ needs.version.outputs.version }}
-          draft: true
-          prerelease: true
-          generate_release_notes: true
-      - name: Echo release info
-        run: echo "::debug::Writing url=${{ steps.create_release.outputs.url }}; id=${{ steps.create_release.outputs.id }}; upload_url=${{ steps.create_release.outputs.upload_url }}"
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Echo cv-maxpowis-{version}.tex
@@ -61,7 +49,7 @@ jobs:
         uses: "finnp/create-file-action@2.0.0"
         env:
           FILE_NAME: "cv-maxpowis-${{ needs.version.outputs.version }}.tex"
-          FILE_DATA: '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{${{ steps.create_release.outputs.url }}}\input{cv}'
+          FILE_DATA: '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{https://github.com/maxpowis/cv/releases/tag/${{ needs.version.outputs.version }}}\input{cv}'
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
@@ -75,8 +63,12 @@ jobs:
           tag_name: ${{ needs.version.outputs.version }}
           name: Release ${{ needs.version.outputs.version }}
           draft: false
+          prerelease: true
+          generate_release_notes: true
           files:  |
             cv-maxpowis-${{ needs.version.outputs.version }}.pdf
+      - name: Echo release info
+        run: echo "::debug::Writing url=${{ steps.create_release.outputs.url }}; id=${{ steps.create_release.outputs.id }}; upload_url=${{ steps.create_release.outputs.upload_url }}"
       - name: Trigger workflow 'Publish PDF release to website'
         uses: peter-evans/repository-dispatch@v2.1.1
         if: ${{ github.event_name=='push' }}
