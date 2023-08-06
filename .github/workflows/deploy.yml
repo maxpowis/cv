@@ -39,19 +39,19 @@ jobs:
           type: ${{ steps.get_release_type.outputs.RELEASE_TYPE }}
       - name: Echo release tag name
         run: echo "::debug::Found tag for ${{ steps.get_release_type.outputs.RELEASE_TYPE }} release >> ${{ steps.cv_release.outputs.release }}"
-      - name: Download cv-maxpowis.pdf from release
-        uses: Legion2/download-release-action@v2.1.0
+      - name: Download all pdf's from release
+        uses: robinraju/release-downloader@v1.8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
           tag: ${{ steps.cv_release.outputs.release }}
-          file: cv-maxpowis.pdf
-      - name: Publish to website
+          fileName: *.pdf
+      - name: Publish all pdf's to website
         uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
           API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN_REPO_WORKFLOW }}
         with:
-          source_file: 'cv-maxpowis.pdf'
+          source_file: '*.pdf'
           destination_repo: 'maxpowis/maxpowis.github.io'
           destination_branch: 'master'
           destination_folder: 'assets'
