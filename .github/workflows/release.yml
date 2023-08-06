@@ -41,30 +41,39 @@ jobs:
     needs: version
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Echo release.dat
-        run: echo "::debug::Writing 'version = ${{ needs.version.outputs.version }}' to release.dat"
-      - name: Update release.dat
-        uses: "finnp/create-file-action@2.0.0"
-        env:
-          FILE_NAME: "release.dat"
-          FILE_DATA: "version = ${{ needs.version.outputs.version }}"
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: cv.tex
-          latexmk_use_lualatex: true
-      - name: Create Release
+      - name: Create draft release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: ${{ needs.version.outputs.version }}
           name: Release ${{ needs.version.outputs.version }}
-          draft: false
+          draft: true
           prerelease: true
-          files: cv.pdf
+          generate_release_notes: true
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Echo cv-maxpowis.tex
+        run: echo "::debug::Writing '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{${{ steps.create_release.outputs.url }}}\input{cv}' to cv-maxpowis.tex"
+      - name: Create cv-maxpowis.tex
+        uses: "finnp/create-file-action@2.0.0"
+        env:
+          FILE_NAME: "cv-maxpowis.tex"
+          FILE_DATA: '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{${{ steps.create_release.outputs.url }}}\input{cv}'
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: cv-maxpowis.tex
+          latexmk_use_lualatex: true
+      - name: Upload assets to release
+        id: update_release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Release ${{ needs.version.outputs.version }}
+          draft: false
+          files:  |
+            cv-maxpowis.pdf
       - name: Trigger workflow 'Publish PDF release to website'
         uses: peter-evans/repository-dispatch@v2.1.1
         if: ${{ github.event_name=='push' }}

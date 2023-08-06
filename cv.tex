@@ -14,17 +14,22 @@
 % headers and footers
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-\usepackage{datatool, filecontents}
-\DTLsetseparator{ = }
-\DTLloaddb[noheader, keys={release_key,release_value}]{release}{release.dat}
-\newcommand{\getreleaseinfo}[1]{\DTLfetch{release}{release_key}{#1}{release_value}}
-\def\getreleaseversion{\getreleaseinfo{version}}
-% TODO: Find a way to add the release version to the url
-\def\getreleaseurl{https://github.com/maxpowis/cv/releases/}
+% set release number (default if not provided)
+\ifdefined\releasenumber
+  \def\getreleaseversion{\releasenumber}
+\else
+  \def\getreleaseversion{undefined}
+\fi
+% set release url (default if not provided)
+\ifdefined\releaseurl
+  \def\getreleaseurl{\releaseurl}
+\else
+  \def\getreleaseurl{https://github.com/maxpowis/cv/releases/}
+\fi
 \pagestyle{fancy}
 \fancyfoot[L]{Max~Powis}
 \fancyfoot[C]{Page~\thepage~of~\pageref*{LastPage}}
-\fancyfoot[R]{\href{\getreleaseurl}{\getreleaseversion}~--~\today}
+\fancyfoot[R]{Release \href{\getreleaseurl}{\getreleaseversion}~--~\today}
 \renewcommand{\footrulewidth}{0.4pt}% default is 0pt
 \fancyhead{}
 \renewcommand{\headrulewidth}{0pt}
