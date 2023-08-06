@@ -45,7 +45,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
           tag: ${{ steps.cv_release.outputs.release }}
-          fileName: *.pdf
+          fileName: '*.pdf'
       - name: Publish all pdf's to website
         uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
