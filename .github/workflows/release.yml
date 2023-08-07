@@ -70,7 +70,7 @@ jobs:
           tag_name: ${{ needs.version.outputs.version }}
           name: Release ${{ needs.version.outputs.version }}
           draft: false
-          prerelease: true
+          prerelease: false
           generate_release_notes: true
           files: |
             cv-maxpowis-${{ needs.version.outputs.version }}.pdf
