@@ -2,16 +2,6 @@ name: Publish PDF release to website
 
 on:
   workflow_dispatch:
-    inputs:
-      release_type:
-        description: Release type
-        type: choice     
-        required: true
-        options: 
-        - latest
-        - stable
-        - prerelease
-        default: latest
   repository_dispatch:
     types: [dispatch_publish]
 
@@ -19,24 +9,13 @@ jobs:
   deploy_web:
     runs-on: ubuntu-latest
     steps:
-#      - name: Set release type based on originating event
-#        id: get_release_type
-#        run: |
-#          if [[ "${{github.event_name}}" == "workflow_dispatch" ]]; 
-#            then computed_release_type="${{inputs.release_type}}"; 
-#            else computed_release_type="latest"; 
-#          fi
-#          echo "::debug::RELEASE_TYPE=$computed_release_type"
-#          echo "RELEASE_TYPE=$computed_release_type" >> $GITHUB_OUTPUT
       - name: Get the release
         uses: pozetroninc/github-action-get-latest-release@master
         id: cv_release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
-#          type: "${{ steps.get_release_type.outputs.RELEASE_TYPE }}"
       - name: Echo release tag name
-#        run: echo "::debug::Found tag for ${{ steps.get_release_type.outputs.RELEASE_TYPE }} release >> ${{ steps.cv_release.outputs.release }}"
         run: echo "::debug::Found tag for LATEST release >> ${{ steps.cv_release.outputs.release }}"
       - name: Download all pdf's from release
         uses: robinraju/release-downloader@v1.8
