@@ -14,8 +14,6 @@ on:
         default: latest
   repository_dispatch:
     types: [dispatch_publish]
-  schedule:
-    - cron: "0 0 1 * *"
 
 jobs:
   deploy_web:
