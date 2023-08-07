@@ -36,7 +36,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
-          type: ${{ steps.get_release_type.outputs.RELEASE_TYPE }}
+          type: "${{ steps.get_release_type.outputs.RELEASE_TYPE }}"
       - name: Echo release tag name
         run: echo "::debug::Found tag for ${{ steps.get_release_type.outputs.RELEASE_TYPE }} release >> ${{ steps.cv_release.outputs.release }}"
       - name: Download all pdf's from release

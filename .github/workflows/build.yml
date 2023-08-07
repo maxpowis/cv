@@ -17,7 +17,7 @@ jobs:
       - name: Echo cv-maxpowis-ga-build.tex
         run: echo "::debug::Writing '\def\releasenumber{ga-build}\input{cv}' to cv-maxpowis-ga-build.tex"
       - name: Create cv-maxpowis-ga-build.tex
-        uses: "finnp/create-file-action@2.0.0"
+        uses: finnp/create-file-action@2.0.0
         env:
           FILE_NAME: "cv-maxpowis-ga-build.tex"
           FILE_DATA: '\def\releasenumber{ga-build}\input{cv}'

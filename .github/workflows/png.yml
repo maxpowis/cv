@@ -16,7 +16,7 @@ jobs:
       - name: Get the latest release
         uses: rez0n/actions-github-release@v2.0
         id: cv_release
-        env:
+        with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
           type: "latest"
