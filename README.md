@@ -11,10 +11,10 @@
     <img src="https://max.pow.is/assets/img/cv/cv-00.png" alt="Logo" height="80">
   </a>
 
-  <h3 align="center">Max Powis's CV & DocOps</h3>
+  <h3 align="center">Max Powis's CV on 💊 steroids</h3>
 
   <p align="center">
-    My latex 🧔‍♂️ CV built, thumbnailed, released and published to my GitHub Pages personal website through GitHub actions 🤘
+    My latex 🧔‍♂️ CV built, thumbnailed, released and published to <br/> my GitHub Pages personal website through GitHub actions 🤘
     <br />
     <a href="https://max.pow.is/cv"><strong>View online »</strong></a>
     <br />
@@ -52,10 +52,12 @@ Peronal add-ons:
 
 * compute age
 * helpers for employer & job records with computed experience durations
+* can be dyanamically generated in light or dark mode version
+* embed version number as clickable link (to corresponding release page)
 * GitHub actions
-  * build & release with version numbering embedded in the generated pdf
-  * publish latest release to my  GitHub    static site repo
-  * generate thumbnails (automatically pushed to my  GitHub   static site repo and embedded in this README)
+  * build & release  light & dark versions with version numbering embedded in the generated pdf
+  * publish latest release to my GitHub pages repo
+  * generate thumbnails (automatically pushed to my  GitHub pages repo and embedded in this README)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
