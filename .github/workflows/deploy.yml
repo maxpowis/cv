@@ -62,10 +62,13 @@ jobs:
           ---
           EOF
       - name: Commit and push changes github-pages repository
-        run: |
-          cd ./github-pages
-          git add .
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git commit -m "Updates from cv release ${{ steps.cv_release.outputs.release }}"
-          git push
+        uses: cpina/github-action-push-to-another-repository@v1.7.2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN_REPO_WORKFLOW }}
+        with:
+          source-directory: 'github-pages'
+          destination-github-username: 'maxpowis'
+          destination-repository-name: 'maxpowis.github.io'
+          user-email: max.powis@gmail.com
+          target-branch: master
+          commit-message: "Updates from cv release ${{ steps.cv_release.outputs.release }}"
