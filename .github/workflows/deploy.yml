@@ -64,7 +64,7 @@ jobs:
       - name: Commit and push changes github-pages repository
         uses: cpina/github-action-push-to-another-repository@v1.7.2
         env:
-          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN_REPO_WORKFLOW }}
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source-directory: 'github-pages'
           destination-github-username: 'maxpowis'
