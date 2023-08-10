@@ -42,7 +42,7 @@ jobs:
       - name: Update redirects for regular pdf
         run: |
           rm -f ./github-pages/_redirects/cv.html
-          file=$(find ./cv -type f ! -name "DARK" -print -quit)
+          file=$(find ./cv -maxdepth 1 -type f | grep -v "DARK" | awk 'NR==1{print}' | xargs -I{} basename {})
           cat << EOF > ./github-pages/_redirects/cv.html
           ---
           permalink: /cv
@@ -53,7 +53,7 @@ jobs:
       - name: Update redirects for dark pdf
         run: |
           rm -f ./github-pages/_redirects/cv_dark.html
-          file=$(find ./cv -type f -name "DARK" -print -quit)
+          file=$(find ./cv -maxdepth 1 -type f | grep "DARK" | awk 'NR==1{print}' | xargs -I{} basename {})
           cat << EOF > ./github-pages/_redirects/cv_dark.html
           ---
           permalink: /cv_dark
