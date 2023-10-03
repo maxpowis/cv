@@ -159,7 +159,7 @@ graph TD
 # Roadmap
 
 * [ ] [Expose dark cv as alternate download on personal website](https://github.com/maxpowis/cv/milestone/3)
-* [ ] Complete this README with missing GitHub actions lowchards and descriptions
+* [ ] Complete this README with missing GitHub actions flowcharts and descriptions
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
