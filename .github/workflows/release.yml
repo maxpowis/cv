@@ -56,7 +56,7 @@ jobs:
           FILE_NAME: "cv-maxpowis-${{ needs.version.outputs.version }}_DARK.tex"
           FILE_DATA: '\def\darkmode{}\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{https://github.com/maxpowis/cv/releases/tag/${{ needs.version.outputs.version }}}\input{cv}'
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: |
             cv-maxpowis-${{ needs.version.outputs.version }}.tex

@@ -39,7 +39,7 @@ jobs:
 #        if: ${{ steps.lint.outputs.num_warnings != 0 }}
 #        run: 'echo "::error file=main.tex::num_warnings: ${{ steps.lint.outputs.num_warnings }}"; exit 1;'
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: cv-maxpowis-ga-build.tex
           latexmk_use_lualatex: true
