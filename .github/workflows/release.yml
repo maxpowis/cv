@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Echo cv-maxpowis-{version}.tex
         run: echo "::debug::Writing '\def\releasenumber{${{ needs.version.outputs.version }}}\def\releaseurl{https://github.com/maxpowis/cv/releases/tag/${{ needs.version.outputs.version }}}\input{cv}' to cv-maxpowis-${{ needs.version.outputs.version }}.tex"
       - name: Create cv-maxpowis-{version}.tex
