@@ -78,7 +78,7 @@ jobs:
       - name: Echo release info
         run: echo "::debug::Created release with url=${{ steps.create_release.outputs.url }}; id=${{ steps.create_release.outputs.id }}; upload_url=${{ steps.create_release.outputs.upload_url }}"
       - name: Trigger workflow 'Publish PDF release to website'
-        uses: peter-evans/repository-dispatch@v2.1.2
+        uses: peter-evans/repository-dispatch@v3.0.0
         if: ${{ github.event_name=='push' }}
         with:
           token: ${{ secrets.API_TOKEN_GITHUB }}
