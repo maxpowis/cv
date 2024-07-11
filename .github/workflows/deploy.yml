@@ -18,7 +18,7 @@ jobs:
       - name: Echo release tag name
         run: echo "::debug::Found tag for LATEST release >> ${{ steps.cv_release.outputs.release }}"
       - name: Download all pdf's from release
-        uses: robinraju/release-downloader@v1.8
+        uses: robinraju/release-downloader@v1.9
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
