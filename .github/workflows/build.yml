@@ -31,7 +31,7 @@ jobs:
         with:
             root_file: cv-maxpowis-ga-build.tex
       - name: Upload TeXtidote report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
             name: textidote_report
             path: report.html
@@ -44,12 +44,12 @@ jobs:
           root_file: cv-maxpowis-ga-build.tex
           latexmk_use_lualatex: true
       - name: Upload pdf
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: cv-maxpowis-ga-build.pdf
           if-no-files-found: error
       - name: Upload logs
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: cv-maxpowis-ga-build.log
