@@ -34,7 +34,7 @@ jobs:
         run: pdftoppm -png -scale-to-x 124 -scale-to-y 175 cv-maxpowis-${{ steps.cv_release.outputs.release }}.pdf cv
       - name: Move PNG's in isolated directory
         run: mkdir --parents cv; mv *.png $_
-      - name: Upload png artifacts to worflow
+      - name: Upload png artifacts to workflow
         uses: actions/upload-artifact@v4
         with:
           path: cv/*.png
