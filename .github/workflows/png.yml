@@ -31,7 +31,7 @@ jobs:
       - name: Convert pdf to png (ImageMagick)
         uses: jruipinto/ImageMagick-action@v1
         with:
-          command: convert -verbose -background white -alpha remove -alpha off -density 600 -scale 10% cv-maxpowis-${{ steps.cv_release.outputs.release }}.pdf cv-%02d.png
+          command: magick convert -verbose -background white -alpha remove -alpha off -density 600 -scale 10% cv-maxpowis-${{ steps.cv_release.outputs.release }}.pdf cv-%02d.png
       - name: Move PNG's in isolated directory
         run: mkdir --parents cv; mv *.png $_
       - name: Upload png artifacts to worflow
