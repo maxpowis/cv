@@ -52,7 +52,7 @@ Peronal add-ons:
 
 * compute age
 * helpers for employer & job records with computed experience durations
-* can be dyanamically generated in light or dark mode version
+* can be dynamically generated in light or dark mode version
 * embed version number as clickable link (to corresponding release page)
 * GitHub actions
   * build & release  light & dark versions with version numbering embedded in the generated pdf
@@ -102,7 +102,7 @@ A package is also available for Windows but I personally prefer using a **WSL2**
 
 Building locally is just a matter of clicking the build button in VSCode in the VSCode setup.
 
-Altrernatively, the pdf can be generated using the command-line:
+Alternatively, the pdf can be generated using the command-line:
 
 ```shell
 # Generate the standard pdf
