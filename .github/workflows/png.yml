@@ -14,12 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get the latest release
-        uses: rez0n/actions-github-release@v2.0
+        uses: pozetroninc/github-action-get-latest-release@v0.8.0
         id: cv_release
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          #token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
-          type: "latest"
       - name: Echo release tag name
         run: echo "::debug::Found tag for latest release >> ${{ steps.cv_release.outputs.release }}"
       - name: Download cv.pdf from release
@@ -44,7 +43,7 @@ jobs:
         uses: crykn/copy_folder_to_another_repo_action@v1.0.6
         if: ${{ inputs.publish_flag }}
         env:
-          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN_REPO_WORKFLOW }}
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_folder: 'cv'
           destination_repo: 'maxpowis/maxpowis.github.io'
