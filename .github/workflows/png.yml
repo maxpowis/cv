@@ -27,11 +27,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: "maxpowis/cv"
           tag: ${{ steps.cv_release.outputs.release }}
-          file: cv.pdf
+          file: cv-maxpowis-${{ steps.cv_release.outputs.release }}.pdf
       - name: Convert pdf to png (ImageMagick)
         uses: jruipinto/ImageMagick-action@v1
         with:
-          command: convert -verbose -background white -alpha remove -alpha off -density 600 -scale 10% cv.pdf cv-%02d.png
+          command: convert -verbose -background white -alpha remove -alpha off -density 600 -scale 10% cv-maxpowis-${{ steps.cv_release.outputs.release }}.pdf cv-%02d.png
       - name: Move PNG's in isolated directory
         run: mkdir --parents cv; mv *.png $_
       - name: Upload png artifacts to worflow
@@ -50,4 +50,4 @@ jobs:
           destination_folder: 'assets/img/cv'
           user_email: 'max.powis@gmail.com'
           user_name: 'maxpowis'
-          commit_msg: 'Update the cv.pdf thumbnails'
+          commit_msg: 'Update the cv-maxpowis-${{ steps.cv_release.outputs.release }}.pdf thumbnails'
