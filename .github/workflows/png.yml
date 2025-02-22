@@ -28,10 +28,10 @@ jobs:
           repository: "maxpowis/cv"
           tag: ${{ steps.cv_release.outputs.release }}
           file: cv-maxpowis-${{ steps.cv_release.outputs.release }}.pdf
-      - name: Convert pdf to png (ImageMagick)
+      - name: Setup ImageMagick
         uses: mfinelli/setup-imagemagick@v6.0.0
-        with:
-          command: magick convert -verbose -background white -alpha remove -alpha off -density 600 -scale 10% cv-maxpowis-${{ steps.cv_release.outputs.release }}.pdf cv-%02d.png
+      - name: Convert pdf to png 
+        run: magick convert -verbose -background white -alpha remove -alpha off -density 600 -scale 10% cv-maxpowis-${{ steps.cv_release.outputs.release }}.pdf cv-%02d.png
       - name: Move PNG's in isolated directory
         run: mkdir --parents cv; mv *.png $_
       - name: Upload png artifacts to worflow
