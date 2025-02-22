@@ -65,7 +65,7 @@ Peronal add-ons:
 
 Page 1 | Page 2 | Page 3 | Page 4
 :--------------:|:---------------:|:---------------:|:---------------:
-![cv1](https://max.pow.is/assets/img/cv/cv-1.png)| ![cv2](https://max.pow.is/assets/img/cv/cv-2.png)| ![cv3](https://max.pow.is/assets/img/cv/cv-3.png)| ![cv4](https://max.pow.is/assets/img/cv/cv-4.png)
+![cv1](https://max.pow.is/assets/img/cv/cv-1.png?v=2)| ![cv2](https://max.pow.is/assets/img/cv/cv-2.png?v=2)| ![cv3](https://max.pow.is/assets/img/cv/cv-3.png?v=2)| ![cv4](https://max.pow.is/assets/img/cv/cv-4.png?v=2)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
