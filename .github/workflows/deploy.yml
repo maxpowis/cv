@@ -62,7 +62,7 @@ jobs:
           ---
           EOF
       - name: Commit and push changes github-pages repository
-        uses: cpina/github-action-push-to-another-repository@v1.7.2
+        uses: cpina/github-action-push-to-another-repository@v1.7.3
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
